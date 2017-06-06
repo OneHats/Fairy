@@ -5,5 +5,6 @@ target 'Fairy' do
 
     pod 'Alamofire'
     pod 'SwiftyJSON'
+    pod 'Kingfisher'
 
 end

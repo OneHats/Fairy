@@ -17,6 +17,8 @@
 		1BF77C921EE649D500E945F3 /* PrefixHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C911EE649D500E945F3 /* PrefixHeader.swift */; };
 		1BF77C961EE6515D00E945F3 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C951EE6515D00E945F3 /* HttpManager.swift */; };
 		1BF77C991EE6879D00E945F3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C981EE6879D00E945F3 /* WebViewController.swift */; };
+		1BF77C9C1EE6AB3500E945F3 /* ADViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C9B1EE6AB3500E945F3 /* ADViewController.swift */; };
+		1BF77CA21EE6B0F600E945F3 /* ADCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77CA11EE6B0F600E945F3 /* ADCollectionViewCell.swift */; };
 		265D1A2EB5E885406FE90E1E /* Pods_Fairy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E871622DF2A715E032058366 /* Pods_Fairy.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		1BF77C911EE649D500E945F3 /* PrefixHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefixHeader.swift; sourceTree = "<group>"; };
 		1BF77C951EE6515D00E945F3 /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
 		1BF77C981EE6879D00E945F3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1BF77C9B1EE6AB3500E945F3 /* ADViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADViewController.swift; sourceTree = "<group>"; };
+		1BF77CA11EE6B0F600E945F3 /* ADCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADCollectionViewCell.swift; sourceTree = "<group>"; };
 		66FFEC948F9DB1C8CF0799BC /* Pods-Fairy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fairy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fairy/Pods-Fairy.release.xcconfig"; sourceTree = "<group>"; };
 		B825A2CA40F99F2EF8DD2BF1 /* Pods-Fairy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fairy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fairy/Pods-Fairy.debug.xcconfig"; sourceTree = "<group>"; };
 		E871622DF2A715E032058366 /* Pods_Fairy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fairy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +137,7 @@
 		1BF77C851EE647A400E945F3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1BF77CA01EE6B0CD00E945F3 /* view */,
 				1BF77C861EE647A400E945F3 /* Controller */,
 			);
 			path = Home;
@@ -143,6 +148,7 @@
 			children = (
 				1BF77C8B1EE647E100E945F3 /* HomeViewController.swift */,
 				1BF77C981EE6879D00E945F3 /* WebViewController.swift */,
+				1BF77C9B1EE6AB3500E945F3 /* ADViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +175,14 @@
 				1BF77C951EE6515D00E945F3 /* HttpManager.swift */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		1BF77CA01EE6B0CD00E945F3 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1BF77CA11EE6B0F600E945F3 /* ADCollectionViewCell.swift */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 		296D8D7B34F43C0B60E238D2 /* Pods */ = {
@@ -345,9 +359,11 @@
 			files = (
 				1BF77C921EE649D500E945F3 /* PrefixHeader.swift in Sources */,
 				1BF77C831EE6473700E945F3 /* AppDelegate.swift in Sources */,
+				1BF77CA21EE6B0F600E945F3 /* ADCollectionViewCell.swift in Sources */,
 				1BF77C8E1EE647F400E945F3 /* UserViewController.swift in Sources */,
 				1BF77C961EE6515D00E945F3 /* HttpManager.swift in Sources */,
 				1BF77C991EE6879D00E945F3 /* WebViewController.swift in Sources */,
+				1BF77C9C1EE6AB3500E945F3 /* ADViewController.swift in Sources */,
 				1BF77C8A1EE647CC00E945F3 /* RootViewController.swift in Sources */,
 				1BF77C8C1EE647E100E945F3 /* HomeViewController.swift in Sources */,
 			);
