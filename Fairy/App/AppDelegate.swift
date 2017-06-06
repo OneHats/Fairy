@@ -13,10 +13,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = RootViewController()
+        window?.makeKeyAndVisible()
+        
+        setNavigationBar()
+        
         return true
+    }
+    
+    func setNavigationBar() {
+        UINavigationBar.appearance().barStyle = UIBarStyle.black
+        UINavigationBar.appearance().barTintColor = KBaseBlueColor
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 18),NSForegroundColorAttributeName:UIColor.white];
+        UINavigationBar.appearance().titleTextAttributes = attributes
+        
+//        let image = UIImage(named: "backImage")
+//        navigationBar.backIndicatorImage = image
+//        navigationBar.backIndicatorTransitionMaskImage = image
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
