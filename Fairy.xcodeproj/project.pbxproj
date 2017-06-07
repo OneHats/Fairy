@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1CB0461EE78968000F37F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1CB0451EE78968000F37F1 /* WebViewController.swift */; };
+		1B1CB0481EE79004000F37F1 /* BannerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1CB0471EE79004000F37F1 /* BannerScrollView.swift */; };
+		1B4D019E1EE7CD3F009AE905 /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D019D1EE7CD3F009AE905 /* ADModel.swift */; };
+		1B4D01A01EE7DC6D009AE905 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D019F1EE7DC6D009AE905 /* ProgressHUD.swift */; };
 		1BF77C691EE644A800E945F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF77C681EE644A800E945F3 /* Assets.xcassets */; };
 		1BF77C6C1EE644A800E945F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF77C6A1EE644A800E945F3 /* LaunchScreen.storyboard */; };
 		1BF77C771EE644A800E945F3 /* FairyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C761EE644A800E945F3 /* FairyTests.swift */; };
@@ -16,7 +20,6 @@
 		1BF77C8E1EE647F400E945F3 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C8D1EE647F400E945F3 /* UserViewController.swift */; };
 		1BF77C921EE649D500E945F3 /* PrefixHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C911EE649D500E945F3 /* PrefixHeader.swift */; };
 		1BF77C961EE6515D00E945F3 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C951EE6515D00E945F3 /* HttpManager.swift */; };
-		1BF77C991EE6879D00E945F3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C981EE6879D00E945F3 /* WebViewController.swift */; };
 		1BF77C9C1EE6AB3500E945F3 /* ADViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C9B1EE6AB3500E945F3 /* ADViewController.swift */; };
 		1BF77CA21EE6B0F600E945F3 /* ADCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77CA11EE6B0F600E945F3 /* ADCollectionViewCell.swift */; };
 		265D1A2EB5E885406FE90E1E /* Pods_Fairy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E871622DF2A715E032058366 /* Pods_Fairy.framework */; };
@@ -33,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B1CB0451EE78968000F37F1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1B1CB0471EE79004000F37F1 /* BannerScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerScrollView.swift; sourceTree = "<group>"; };
+		1B4D019D1EE7CD3F009AE905 /* ADModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
+		1B4D019F1EE7DC6D009AE905 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		1BF77C5E1EE644A800E945F3 /* Fairy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fairy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF77C681EE644A800E945F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		1BF77C6B1EE644A800E945F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,7 +53,6 @@
 		1BF77C8D1EE647F400E945F3 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		1BF77C911EE649D500E945F3 /* PrefixHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefixHeader.swift; sourceTree = "<group>"; };
 		1BF77C951EE6515D00E945F3 /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
-		1BF77C981EE6879D00E945F3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1BF77C9B1EE6AB3500E945F3 /* ADViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADViewController.swift; sourceTree = "<group>"; };
 		1BF77CA11EE6B0F600E945F3 /* ADCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADCollectionViewCell.swift; sourceTree = "<group>"; };
 		66FFEC948F9DB1C8CF0799BC /* Pods-Fairy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fairy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fairy/Pods-Fairy.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +79,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B1CB0441EE78942000F37F1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1B1CB0451EE78968000F37F1 /* WebViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1B4D019C1EE7CD21009AE905 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1B4D019D1EE7CD3F009AE905 /* ADModel.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		1BF77C551EE644A800E945F3 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +150,7 @@
 		1BF77C841EE647A400E945F3 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				1B1CB0441EE78942000F37F1 /* Common */,
 				1BF77C851EE647A400E945F3 /* Home */,
 				1BF77C871EE647A400E945F3 /* User */,
 			);
@@ -137,6 +160,7 @@
 		1BF77C851EE647A400E945F3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1B4D019C1EE7CD21009AE905 /* model */,
 				1BF77CA01EE6B0CD00E945F3 /* view */,
 				1BF77C861EE647A400E945F3 /* Controller */,
 			);
@@ -147,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				1BF77C8B1EE647E100E945F3 /* HomeViewController.swift */,
-				1BF77C981EE6879D00E945F3 /* WebViewController.swift */,
 				1BF77C9B1EE6AB3500E945F3 /* ADViewController.swift */,
 			);
 			path = Controller;
@@ -173,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				1BF77C951EE6515D00E945F3 /* HttpManager.swift */,
+				1B4D019F1EE7DC6D009AE905 /* ProgressHUD.swift */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -181,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				1BF77CA11EE6B0F600E945F3 /* ADCollectionViewCell.swift */,
+				1B1CB0471EE79004000F37F1 /* BannerScrollView.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -358,11 +383,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BF77C921EE649D500E945F3 /* PrefixHeader.swift in Sources */,
+				1B1CB0481EE79004000F37F1 /* BannerScrollView.swift in Sources */,
+				1B4D01A01EE7DC6D009AE905 /* ProgressHUD.swift in Sources */,
+				1B1CB0461EE78968000F37F1 /* WebViewController.swift in Sources */,
+				1B4D019E1EE7CD3F009AE905 /* ADModel.swift in Sources */,
 				1BF77C831EE6473700E945F3 /* AppDelegate.swift in Sources */,
 				1BF77CA21EE6B0F600E945F3 /* ADCollectionViewCell.swift in Sources */,
 				1BF77C8E1EE647F400E945F3 /* UserViewController.swift in Sources */,
 				1BF77C961EE6515D00E945F3 /* HttpManager.swift in Sources */,
-				1BF77C991EE6879D00E945F3 /* WebViewController.swift in Sources */,
 				1BF77C9C1EE6AB3500E945F3 /* ADViewController.swift in Sources */,
 				1BF77C8A1EE647CC00E945F3 /* RootViewController.swift in Sources */,
 				1BF77C8C1EE647E100E945F3 /* HomeViewController.swift in Sources */,

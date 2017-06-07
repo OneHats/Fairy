@@ -8,17 +8,24 @@
 
 import UIKit
 import Kingfisher
+import SwiftyJSON
 
 class ADCollectionViewCell: UICollectionViewCell {
     
-    var title:String? {
+//    var title:String? {
+//        didSet {
+//            titleLabel?.text = title
+//        }
+//    }
+//    var imageUrl:String? {
+//        didSet {
+//            imageView?.kf.setImage(with: URL(string: imageUrl!))
+//        }
+//    }
+    
+    var adInfo:ADModel? {
         didSet {
-            titleLabel?.text = title
-        }
-    }
-    var imageUrl:String? {
-        didSet {
-            imageView?.kf.setImage(with: URL(string: imageUrl!))
+            imageView?.kf.setImage(with: URL(string: (adInfo?.imageUrl!)!))
         }
     }
     
@@ -33,8 +40,8 @@ class ADCollectionViewCell: UICollectionViewCell {
         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: viewW, height: frame.size.height))
         contentView.addSubview(imageView!)
         
-        titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: viewW, height: 30))
-        contentView.addSubview(titleLabel!)
+//        titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: viewW, height: 30))
+//        contentView.addSubview(titleLabel!)
     }
     
     required init?(coder aDecoder: NSCoder) {

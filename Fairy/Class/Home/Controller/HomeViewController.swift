@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(rightItemClick))
+        
+        ProgressHUD.showSuccess(text: "")
     }
     
     func rightItemClick() {

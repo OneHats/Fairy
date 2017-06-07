@@ -10,9 +10,10 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController {
-
-    var webView:WKWebView?
+    
     var urlString:String?
+    
+    private var webView:WKWebView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class WebViewController: UIViewController {
         
         if urlString != nil {
             webView = WKWebView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight))
-            self.view.addSubview(webView!)
+            view.addSubview(webView!)
             
             let url = URL(string: urlString!)
             webView?.load(URLRequest(url: url!))
