@@ -15,11 +15,9 @@ class HomeViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(rightItemClick))
-        
-        ProgressHUD.showSuccess(text: "")
     }
     
-    func rightItemClick() {
+    @objc private func rightItemClick() {
         let controller = ADViewController()
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)

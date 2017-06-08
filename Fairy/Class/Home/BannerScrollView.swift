@@ -36,7 +36,7 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         initilizeSubview()
     }
     
-    func initilizeSubview() {
+    private func initilizeSubview() {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
@@ -86,7 +86,7 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         pageControl?.currentPage = Int(page) % dataArray.count
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let page = scrollView.contentOffset.x / scrollView.bounds.width;
         
         let oneScreen = CGFloat(dataArray.count) * scrollView.frame.width

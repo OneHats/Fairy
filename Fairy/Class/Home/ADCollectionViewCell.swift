@@ -12,20 +12,10 @@ import SwiftyJSON
 
 class ADCollectionViewCell: UICollectionViewCell {
     
-//    var title:String? {
-//        didSet {
-//            titleLabel?.text = title
-//        }
-//    }
-//    var imageUrl:String? {
-//        didSet {
-//            imageView?.kf.setImage(with: URL(string: imageUrl!))
-//        }
-//    }
-    
     var adInfo:ADModel? {
         didSet {
             imageView?.kf.setImage(with: URL(string: (adInfo?.imageUrl!)!))
+            titleLabel?.text = adInfo?.title
         }
     }
     
@@ -47,6 +37,5 @@ class ADCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
 }

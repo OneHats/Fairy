@@ -21,18 +21,13 @@ class ADModel: NSObject {
         
         for json in array {
             let model = ADModel()
-            
             model.setValuesForKeys(json.dictionaryObject!)
-//            model.link = json["link"].string
-//            model.imageUrl = json["imageUrl"].string
             
             list.append(model)
         }
         
         return list
     }
-    
-    
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
     }
