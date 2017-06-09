@@ -137,12 +137,12 @@
 		1BF77C811EE6473700E945F3 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1BF77C821EE6473700E945F3 /* AppDelegate.swift */,
+				1BF77C681EE644A800E945F3 /* Assets.xcassets */,
 				1BF77C6D1EE644A800E945F3 /* Info.plist */,
 				1BF77C6A1EE644A800E945F3 /* LaunchScreen.storyboard */,
-				1BF77C681EE644A800E945F3 /* Assets.xcassets */,
-				1BF77C821EE6473700E945F3 /* AppDelegate.swift */,
-				1BF77C891EE647CC00E945F3 /* RootViewController.swift */,
 				1BF77C911EE649D500E945F3 /* PrefixHeader.swift */,
+				1BF77C891EE647CC00E945F3 /* RootViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -160,9 +160,9 @@
 		1BF77C851EE647A400E945F3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1BF77C861EE647A400E945F3 /* Controller */,
 				1B4D019C1EE7CD21009AE905 /* model */,
 				1BF77CA01EE6B0CD00E945F3 /* view */,
-				1BF77C861EE647A400E945F3 /* Controller */,
 			);
 			path = Home;
 			sourceTree = "<group>";
