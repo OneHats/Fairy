@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0AB9951EEA97D600207F4A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0AB9941EEA97D600207F4A /* TableViewController.swift */; };
 		1B1CB0461EE78968000F37F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1CB0451EE78968000F37F1 /* WebViewController.swift */; };
 		1B1CB0481EE79004000F37F1 /* BannerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1CB0471EE79004000F37F1 /* BannerScrollView.swift */; };
 		1B4D019E1EE7CD3F009AE905 /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D019D1EE7CD3F009AE905 /* ADModel.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B0AB9941EEA97D600207F4A /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1B1CB0451EE78968000F37F1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1B1CB0471EE79004000F37F1 /* BannerScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerScrollView.swift; sourceTree = "<group>"; };
 		1B4D019D1EE7CD3F009AE905 /* ADModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				1BF77C8D1EE647F400E945F3 /* UserViewController.swift */,
+				1B0AB9941EEA97D600207F4A /* TableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			files = (
 				1BF77C921EE649D500E945F3 /* PrefixHeader.swift in Sources */,
 				1B1CB0481EE79004000F37F1 /* BannerScrollView.swift in Sources */,
+				1B0AB9951EEA97D600207F4A /* TableViewController.swift in Sources */,
 				1B4D01A01EE7DC6D009AE905 /* ProgressHUD.swift in Sources */,
 				1B1CB0461EE78968000F37F1 /* WebViewController.swift in Sources */,
 				1B4D019E1EE7CD3F009AE905 /* ADModel.swift in Sources */,
