@@ -26,6 +26,11 @@ class WebViewController: UIViewController {
             let url = URL(string: urlString!)
             webView?.load(URLRequest(url: url!))
         }
+        
+//        let blurEffect = UIBlurEffect(style: .light)
+//        let effectView = UIVisualEffectView(effect: blurEffect)
+//        effectView.frame = view.bounds
+//        view.addSubview(effectView)
     }
 
     override func didReceiveMemoryWarning() {
