@@ -16,11 +16,16 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     var dataArray:[ADModel] = [] {
         didSet {
+            totalPage = dataArray.count * 20
             collectionView?.reloadData()
-            collectionView?.contentOffset = CGPoint(x: frame.width * CGFloat(dataArray.count), y: 0)
+            collectionView?.contentOffset = CGPoint(x: frame.width * CGFloat(totalPage / 2), y: 0)
             
-            pageControl?.numberOfPages = dataArray.count
-            pageControl?.currentPage = 0
+            if dataArray.count > 1 {
+                pageControl?.numberOfPages = dataArray.count
+                pageControl?.currentPage = 0
+                
+                openTimer()
+            }
         }
     }
     
@@ -28,6 +33,13 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     private var collectionView:UICollectionView?
     private var pageControl:UIPageControl?
+    private var totalPage:Int = 0
+    private var timer:Timer?
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,7 +73,7 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     //MARK:
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataArray.count * 3;
+        return totalPage
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -81,25 +93,57 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let page = scrollView.contentOffset.x / scrollView.bounds.width;
-        pageControl?.currentPage = Int(page) % dataArray.count
-    }
-    
+    //MARK:
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        let page = scrollView.contentOffset.x / scrollView.bounds.width;
-        
-        let oneScreen = CGFloat(dataArray.count) * scrollView.frame.width
-        if Int(page) < dataArray.count {
-            scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x + oneScreen, y: 0)
-        } else if Int(page) > dataArray.count * 2 - 1 {
-            scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x - oneScreen, y: 0)
+        invalidateTimer()
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let page = currentPage(scrollView)
+        if velocity.x > 0 {
+            pageControl?.currentPage = (page + 1) % dataArray.count
+        } else if velocity.x < 0 {
+            pageControl?.currentPage = page % dataArray.count
         }
-        pageControl?.currentPage = Int(page) % dataArray.count
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        openTimer()
+        let page = currentPage(scrollView)
+        pageControl?.currentPage = page % dataArray.count
+        
+        if page == 0 || Int(page) == totalPage - 1 {
+            collectionView?.scrollToItem(at: IndexPath(item: totalPage / 2, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
+        }
     }
     
+    private func currentPage(_ scrollView:UIScrollView) -> Int {
+        return Int(scrollView.contentOffset.x / scrollView.bounds.width)
+    }
+    
+    //MARK:
+    @objc private func autoScroll() {
+        var currentPage = self.currentPage(collectionView!) + 1
+        
+        if currentPage >= totalPage {
+            currentPage = totalPage / 2
+            
+            collectionView?.scrollToItem(at: IndexPath(item: currentPage - 1, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
+            collectionView?.scrollToItem(at: IndexPath(item: currentPage, section: 0), at: UICollectionViewScrollPosition.left, animated: true)
+        } else {
+            collectionView?.scrollToItem(at: IndexPath(item: currentPage, section: 0), at: UICollectionViewScrollPosition.left, animated: true)
+        }
+        
+        pageControl?.currentPage = currentPage % dataArray.count
+    }
+    
+    func openTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(autoScroll), userInfo: nil, repeats: true)
+        RunLoop().add(timer!, forMode: RunLoopMode.commonModes)
+    }
+    
+    func invalidateTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
 }
