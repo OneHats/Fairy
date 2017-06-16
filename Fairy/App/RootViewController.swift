@@ -27,7 +27,6 @@ class RootViewController: UITabBarController {
             let barItem = tabBar.items?[i]
             barItem?.title = titles[i]
         }
-        
     }
 
     override func didReceiveMemoryWarning() {

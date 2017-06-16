@@ -13,6 +13,3 @@ let KBackgroundColor = UIColor.groupTableViewBackground
 
 let ScreenWidth = UIScreen.main.bounds.size.width
 let ScreenHeight = UIScreen.main.bounds.size.height
-
-
-

@@ -8,32 +8,49 @@
 
 import UIKit
 
-class UserViewController: UIViewController,UITableViewDataSource {
+class UserViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
-    var tableView:UITableView?
-    var dataArray:[String] = ["001","002"]
+    private var tableView:UITableView?
+    private var dataArray = [["01"],["001","002"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        tableView = UITableView(frame: view.bounds)
-        tableView?.dataSource = self
+        tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView?.tableFooterView = UIView()
+        tableView?.dataSource = self
+        tableView?.delegate = self
+        tableView?.sectionFooterHeight = 0.0
+        tableView?.layoutMargins = UIEdgeInsets.zero
+        tableView?.separatorInset = UIEdgeInsets.zero
         view.addSubview(tableView!)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return dataArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let array = dataArray[section]
+        return array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = dataArray[indexPath.row]
+        let array = dataArray[indexPath.section]
+        cell.textLabel?.text = array[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.layoutMargins = UIEdgeInsets.zero
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10.0
     }
     
     override func didReceiveMemoryWarning() {

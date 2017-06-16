@@ -26,11 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setNavigationBar() {
         UINavigationBar.appearance().barStyle = UIBarStyle.black
-        UINavigationBar.appearance().barTintColor = KBaseBlueColor
         UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = KBaseBlueColor
         
-        let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 18),NSForegroundColorAttributeName:UIColor.white];
-        UINavigationBar.appearance().titleTextAttributes = attributes
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 18),NSForegroundColorAttributeName:UIColor.white]
         
 //        let image = UIImage(named: "backImage")
 //        navigationBar.backIndicatorImage = image
@@ -58,7 +57,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
 }
-
