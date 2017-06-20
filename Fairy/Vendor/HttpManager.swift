@@ -39,4 +39,9 @@ class HttpManager: NSObject {
         }
     }
     
+    func test() {
+        Alamofire.request("").validate().responseData { (dataResponse) in
+        }
+    }
+    
 }

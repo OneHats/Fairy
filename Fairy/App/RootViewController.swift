@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RootViewController: UITabBarController {
 
@@ -19,6 +20,7 @@ class RootViewController: UITabBarController {
         
         let userVC = UserViewController()
         let userNVC = UINavigationController(rootViewController: userVC)
+        userNVC.view.backgroundColor = UIColor.white
         
         self.viewControllers = [homeNVC,userNVC]
         
@@ -27,6 +29,21 @@ class RootViewController: UITabBarController {
             let barItem = tabBar.items?[i]
             barItem?.title = titles[i]
         }
+        
+        networkMonitor()
+    }
+    
+    private func networkMonitor()  {
+        let networkManager = NetworkReachabilityManager(host: "www.baidu.com")
+        networkManager?.listener = { status in
+            
+            switch status {
+            case .notReachable:
+                ProgressHUD.showError(text: "网络已断开")
+            default: break
+            }
+        }
+        networkManager?.startListening()
     }
 
     override func didReceiveMemoryWarning() {
