@@ -11,6 +11,7 @@
 		1B11520C1EF91C0600C0AA66 /* PhotosLibraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B11520B1EF91C0600C0AA66 /* PhotosLibraryController.swift */; };
 		1B1CB0461EE78968000F37F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1CB0451EE78968000F37F1 /* WebViewController.swift */; };
 		1B1CB0481EE79004000F37F1 /* BannerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1CB0471EE79004000F37F1 /* BannerScrollView.swift */; };
+		1B2DC70B1EFA052A00897F12 /* PhotosCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DC70A1EFA052A00897F12 /* PhotosCollectionController.swift */; };
 		1B468A5B1EF7CFD000AD8711 /* ScanQRCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B468A5A1EF7CFD000AD8711 /* ScanQRCodeController.swift */; };
 		1B4D019E1EE7CD3F009AE905 /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D019D1EE7CD3F009AE905 /* ADModel.swift */; };
 		1B4D01A01EE7DC6D009AE905 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D019F1EE7DC6D009AE905 /* ProgressHUD.swift */; };
@@ -43,6 +44,7 @@
 		1B11520B1EF91C0600C0AA66 /* PhotosLibraryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosLibraryController.swift; sourceTree = "<group>"; };
 		1B1CB0451EE78968000F37F1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1B1CB0471EE79004000F37F1 /* BannerScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerScrollView.swift; sourceTree = "<group>"; };
+		1B2DC70A1EFA052A00897F12 /* PhotosCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionController.swift; sourceTree = "<group>"; };
 		1B468A5A1EF7CFD000AD8711 /* ScanQRCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRCodeController.swift; sourceTree = "<group>"; };
 		1B4D019D1EE7CD3F009AE905 /* ADModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
 		1B4D019F1EE7DC6D009AE905 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				1BF77C8D1EE647F400E945F3 /* UserViewController.swift */,
 				1B468A5A1EF7CFD000AD8711 /* ScanQRCodeController.swift */,
 				1B11520B1EF91C0600C0AA66 /* PhotosLibraryController.swift */,
+				1B2DC70A1EFA052A00897F12 /* PhotosCollectionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2DC70B1EFA052A00897F12 /* PhotosCollectionController.swift in Sources */,
 				1BF77C921EE649D500E945F3 /* PrefixHeader.swift in Sources */,
 				1B1CB0481EE79004000F37F1 /* BannerScrollView.swift in Sources */,
 				1B4D01A01EE7DC6D009AE905 /* ProgressHUD.swift in Sources */,

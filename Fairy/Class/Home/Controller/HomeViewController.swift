@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
         let controller = ADViewController()
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
+        
     }
 
     override func didReceiveMemoryWarning() {

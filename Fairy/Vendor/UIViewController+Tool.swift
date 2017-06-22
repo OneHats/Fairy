@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+    
     func showAuthorizationStatusDeniedAlert(message:String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
@@ -24,7 +25,7 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func openSetting() {
+    private func openSetting() {
         let url = URL(string: UIApplicationOpenSettingsURLString)
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.openURL(url!)

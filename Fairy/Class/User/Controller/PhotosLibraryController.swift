@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class PhotosLibraryController: UIViewController,UITableViewDataSource {
+class PhotosLibraryController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     private var tableView:UITableView?
     private var dataArray:PHFetchResult<PHAssetCollection>?
@@ -22,7 +22,7 @@ class PhotosLibraryController: UIViewController,UITableViewDataSource {
         tableView = UITableView(frame: view.bounds, style: UITableViewStyle.plain)
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView?.dataSource = self
-//        tableView?.delegate = self
+        tableView?.delegate = self
         tableView?.rowHeight = 50
         view.addSubview(tableView!)
     }
@@ -46,9 +46,17 @@ class PhotosLibraryController: UIViewController,UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.layoutMargins = UIEdgeInsets.zero
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let collection = dataArray?[indexPath.row]
+        let fetch = PHAsset.fetchAssets(in: collection!, options: nil)
+        
+        let controller = PhotosCollectionController()
+        controller.fetchResult = fetch
+        navigationController?.pushViewController(controller, animated: true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 }

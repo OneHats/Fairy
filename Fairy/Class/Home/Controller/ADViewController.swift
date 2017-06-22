@@ -20,7 +20,7 @@ class ADViewController: UIViewController {
         view.backgroundColor = UIColor.white
         automaticallyAdjustsScrollViewInsets = false
         
-        bannerView = BannerScrollView(frame: CGRect(x: 0, y: 64, width: ScreenWidth, height: ScreenWidth * 0.24))
+        bannerView = BannerScrollView(frame: CGRect(x: 0, y: 64, width: Screen_W, height: Screen_W * 0.24))
         bannerView?.clickBlock = { link in
             let controller = WebViewController()
             controller.urlString = link
