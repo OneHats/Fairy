@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Kingfisher
 
 private let reuseIdentifier = "Cell"
 typealias ADClickBlock = (String)->()
@@ -55,8 +56,8 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         layout.itemSize = frame.size
         layout.scrollDirection = .horizontal
         
-        collectionView = UICollectionView(frame: CGRect(origin: CGPoint.zero, size: frame.size), collectionViewLayout: layout)
-        collectionView?.register(ADCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.backgroundColor = KBackgroundColor
         collectionView?.isPagingEnabled = true
@@ -77,10 +78,17 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ADCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
-        let info = dataArray[indexPath.item % dataArray.count]
-        cell.adInfo = info
+        var imageV = cell.contentView.viewWithTag(1111) as? UIImageView
+        if imageV == nil  {
+            imageV = UIImageView(frame: cell.contentView.bounds)
+            imageV?.tag = 1111
+            cell.contentView.addSubview(imageV!)
+        }
+        
+         let info = dataArray[indexPath.item % dataArray.count]
+        imageV?.kf.setImage(with: URL(string: info.imageUrl!))
         
         return cell
     }
@@ -138,8 +146,10 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     func openTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(autoScroll), userInfo: nil, repeats: true)
-        RunLoop().add(timer!, forMode: RunLoopMode.commonModes)
+        if dataArray.count > 1 {
+            timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(autoScroll), userInfo: nil, repeats: true)
+            RunLoop().add(timer!, forMode: RunLoopMode.commonModes)
+        }
     }
     
     func invalidateTimer() {

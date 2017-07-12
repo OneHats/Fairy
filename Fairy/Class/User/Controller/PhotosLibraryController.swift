@@ -16,7 +16,40 @@ class PhotosLibraryController: UIViewController,UITableViewDataSource,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         
+        checkStatus()
+    }
+    
+    func checkStatus() {
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .authorized:
+            addSubView()
+            
+        case .denied:
+            ProgressHUD.showError(text: "已经禁用")
+            
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({ status in
+                switch status {
+                case .authorized:
+                    self.addSubView()
+                    
+                case .denied:
+                    ProgressHUD.showError(text: "已经禁用")
+                    
+                default:
+                    break
+                }
+            })
+            
+        default:
+            break
+        }
+        
+    }
+    
+    func addSubView() {
         dataArray = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.albumRegular, options: nil)
         
         tableView = UITableView(frame: view.bounds, style: UITableViewStyle.plain)

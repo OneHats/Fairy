@@ -39,9 +39,25 @@ class HttpManager: NSObject {
         }
     }
     
-    func test() {
-        Alamofire.request("").validate().responseData { (dataResponse) in
-        }
+    func sdfdsf(complect:@escaping ([JSON]) -> Swift.Void) {
+        
     }
+    
+    func getHotLive(complect:@escaping ([JSON]) -> Swift.Void) {
+        Alamofire.request("https://live.9158.com/Fans/GetHotLive", method: HTTPMethod.get, parameters: ["page":"1"], encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            
+            switch response.result {
+            case .success(let value):
+                if let json = JSON(value)["data"]["list"].array {
+                    complect(json)
+                }
+            default:
+                print("error")
+                
+            }
+        }
+        
+    }
+    
     
 }

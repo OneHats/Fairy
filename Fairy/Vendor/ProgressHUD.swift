@@ -48,6 +48,10 @@ class ProgressHUD: UIView {
                 return
             }
         }
+        
+//        get {
+//            return text
+//        }
     }
     
     //MARK: - public
@@ -160,7 +164,7 @@ class ProgressHUD: UIView {
         self.init(backView: backView!, mode: .CustomeView)
     }
     
-    convenience init(backView:UIView,mode:HudMode) {
+    convenience init(backView:UIView, mode:HudMode) {
         self.init(frame: backView.bounds)
         self.mode = mode.rawValue
         

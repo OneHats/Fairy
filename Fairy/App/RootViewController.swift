@@ -40,6 +40,8 @@ class RootViewController: UITabBarController {
             switch status {
             case .notReachable:
                 ProgressHUD.showError(text: "网络已断开")
+            case .reachable(.wwan):
+                ProgressHUD.showSuccess(text: "正在使用手机网络")
             default: break
             }
         }
