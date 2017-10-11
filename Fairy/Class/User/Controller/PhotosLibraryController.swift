@@ -92,4 +92,8 @@ class PhotosLibraryController: UIViewController,UITableViewDataSource,UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    deinit {
+        print("ddddddd")
+    }
 }

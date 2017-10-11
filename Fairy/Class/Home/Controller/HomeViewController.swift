@@ -16,6 +16,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
     private var bannerView:BannerScrollView?
     private var tableView:UITableView?
     private var dataArray:[JSON] = []
+    private var refreshControl:UIRefreshControl?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,13 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(rightItemClick))
         
         setSubView()
-        loadData()
+        HttpManager.shareManage.getADList { (error, list) in
+            if error == nil {
+                self.bannerView?.dataArray = ADModel.getModelListWith(array: list!)
+            }
+        }
+        
+//        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,25 +65,28 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         tableView?.separatorInset = UIEdgeInsets.zero
         tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
         view.addSubview(tableView!)
+        
+        refreshControl = UIRefreshControl(frame: CGRect.zero)
+        refreshControl?.attributedTitle = NSAttributedString(string: "加载中")
+        refreshControl?.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
+        tableView?.addSubview(refreshControl!)
     }
     
-    private func loadData() {
-        HttpManager.shareManage.getADList { (error, list) in
+    @objc private func loadData() {
+        HttpManager.shareManage.getHotLive { (error ,json ) in
+            self.refreshControl?.endRefreshing()
+            
             if error == nil {
-                self.bannerView?.dataArray = ADModel.getModelListWith(array: list!)
+                self.dataArray = json!
+                self.tableView?.reloadData()
             }
-        }
-        
-        HttpManager.shareManage.getHotLive { (json) in
-            self.dataArray = json
-            self.tableView?.reloadData()
         }
     }
     
     @objc private func rightItemClick() {
-//        let controller = LiveInfoController()
-//        controller.hidesBottomBarWhenPushed = true
-//        self.navigationController?.pushViewController(controller, animated: true)
+        let controller = LiveInfoController()
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     //MARK:
@@ -91,19 +101,25 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         }
         
         var imageV = cell?.contentView.viewWithTag(1111) as? UIImageView
+        var textL = cell?.contentView.viewWithTag(2222) as? UILabel
+        
         if imageV == nil  {
             imageV = UIImageView(frame: CGRect(x: 10, y: 5, width: 40, height:40))
             imageV?.tag = 1111
             cell?.contentView.addSubview(imageV!)
-        }
-        
-        var textL = cell?.contentView.viewWithTag(2222) as? UILabel
-        if textL == nil  {
+            
             textL = UILabel(frame: CGRect(x: 60, y: 5, width: 200, height:40))
             textL?.font = UIFont.systemFont(ofSize: 15)
             textL?.tag = 2222
             cell?.contentView.addSubview(textL!)
         }
+        
+//        if textL == nil  {
+//            textL = UILabel(frame: CGRect(x: 60, y: 5, width: 200, height:40))
+//            textL?.font = UIFont.systemFont(ofSize: 15)
+//            textL?.tag = 2222
+//            cell?.contentView.addSubview(textL!)
+//        }
         
         let info = dataArray[indexPath.row]
         textL?.text = info["gps"].string

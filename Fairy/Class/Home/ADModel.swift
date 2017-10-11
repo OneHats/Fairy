@@ -10,19 +10,18 @@ import UIKit
 import SwiftyJSON
 
 class ADModel: NSObject {
-    var contents:String?
-    var title:String?
+    @objc var contents:String?
+    @objc var title:String?
     
-    var link:String?
-    var imageUrl:String?
+    @objc var link:String?
+    @objc var imageUrl:String?
     
     class func getModelListWith(array: [JSON]) -> [ADModel] {
         var list = [ADModel]()
         
         for json in array {
-            let model = ADModel()
+            let model = ADModel.init()
             model.setValuesForKeys(json.dictionaryObject!)
-            
             list.append(model)
         }
         

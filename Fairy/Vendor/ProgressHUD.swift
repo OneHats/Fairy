@@ -48,10 +48,6 @@ class ProgressHUD: UIView {
                 return
             }
         }
-        
-//        get {
-//            return text
-//        }
     }
     
     //MARK: - public
@@ -79,13 +75,13 @@ class ProgressHUD: UIView {
     
     ///提示
     class func showSuccess(text:String?) {
-        let successText = (text != nil && text?.characters.count != 0) ? text! : "操作成功"
+        let successText = text ?? "操作成功"
         ProgressHUD.showMessage(text: successText)
     }
     
     class func showError(text:String?) {
-        let successText = (text != nil && text?.characters.count != 0) ? text! : "操作失败"
-        ProgressHUD.showMessage(text: successText)
+        let errorText = text ?? "操作失败"
+        ProgressHUD.showMessage(text: errorText)
     }
     
     class func hideForView(backView:UIView?) {
@@ -207,7 +203,7 @@ class ProgressHUD: UIView {
         let textS = NSString(string: (textLabel?.text)!)
         let size = textS.boundingRect(with: CGSize(width: frame.width * 0.8, height: 0.0),
                                       options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                      attributes: [NSFontAttributeName: textLabel?.font! as Any],
+                                      attributes: [NSAttributedStringKey.font: textLabel?.font! as Any],
                                       context: nil).size
         return size
     }

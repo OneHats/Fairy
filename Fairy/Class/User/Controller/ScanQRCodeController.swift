@@ -22,7 +22,7 @@ class ScanQRCodeController: UIViewController {
     }
     
     private func checkStatus() {
-        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if status == AVAuthorizationStatus.authorized {
             showScanView()
             
@@ -30,7 +30,7 @@ class ScanQRCodeController: UIViewController {
             showAuthorizationStatusDeniedAlert(message: "没有访问权限")
             
         } else if (status == AVAuthorizationStatus.notDetermined) {
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (flag) in
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (flag) in
                 DispatchQueue.main.async {
                     flag ? self.showScanView() : ()
                 }
@@ -39,12 +39,12 @@ class ScanQRCodeController: UIViewController {
     }
     
     private func showScanView() {
-        captureSession.sessionPreset = AVCaptureSessionPresetHigh
+        captureSession.sessionPreset = AVCaptureSession.Preset.high
         
-        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        let deviceInput = try? AVCaptureDeviceInput(device: captureDevice)
-        if captureSession.canAddInput(deviceInput) {
-            captureSession.addInput(deviceInput)
+        let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
+        let deviceInput = try? AVCaptureDeviceInput(device: captureDevice!)
+        if captureSession.canAddInput(deviceInput!) {
+            captureSession.addInput(deviceInput!)
         }
         
         let metadataOutput = AVCaptureMetadataOutput()
@@ -54,8 +54,8 @@ class ScanQRCodeController: UIViewController {
         }
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer?.frame = view.bounds
-        view.layer.addSublayer(previewLayer!)
+        previewLayer.frame = view.bounds
+        view.layer.addSublayer(previewLayer)
         
         captureSession.startRunning()
     }

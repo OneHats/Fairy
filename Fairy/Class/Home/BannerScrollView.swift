@@ -87,8 +87,10 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
             cell.contentView.addSubview(imageV!)
         }
         
-         let info = dataArray[indexPath.item % dataArray.count]
-        imageV?.kf.setImage(with: URL(string: info.imageUrl!))
+        let info = dataArray[indexPath.item % dataArray.count]
+        if info.imageUrl != nil {
+            imageV?.kf.setImage(with: URL(string: info.imageUrl!))
+        }
         
         return cell
     }
@@ -96,7 +98,7 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let info = dataArray[indexPath.item % dataArray.count]
-        if self.clickBlock != nil {
+        if self.clickBlock != nil && info.link != nil {
             self.clickBlock!(info.link!)
         }
     }

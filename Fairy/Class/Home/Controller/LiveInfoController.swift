@@ -15,7 +15,6 @@ class LiveInfoController: UIViewController {
     var liveModel:JSON?
     private var imageView:UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -24,9 +23,15 @@ class LiveInfoController: UIViewController {
 //        imageView = UIImageView(frame: CGRect(x: 0, y: 64, width: Screen_W, height: Screen_W))
 //        imageView.kf.setImage(with: URL(string: (liveModel?["bigpic"].string)!))
 //        self.view.addSubview(imageView)
+        
     }
-
+    
+    func rightItemClick() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
 }
