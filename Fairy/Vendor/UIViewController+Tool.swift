@@ -12,12 +12,12 @@ import UIKit
 extension UIViewController {
     
     func showAuthorizationStatusDeniedAlert(message:String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertController.Style.alert)
         
-        let cancelAction = UIAlertAction(title: "知道啦", style: UIAlertActionStyle.default, handler: nil)
+        let cancelAction = UIAlertAction(title: "知道啦", style: UIAlertAction.Style.default, handler: nil)
         alert.addAction(cancelAction)
         
-        let operationAction = UIAlertAction(title: "去设置", style: UIAlertActionStyle.default) { (action) in
+        let operationAction = UIAlertAction(title: "去设置", style: UIAlertAction.Style.default) { (action) in
             self.openSetting()
         }
         alert.addAction(operationAction)
@@ -26,7 +26,7 @@ extension UIViewController {
     }
     
     private func openSetting() {
-        let url = URL(string: UIApplicationOpenSettingsURLString)
+        let url = URL(string: UIApplication.openSettingsURLString)
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.openURL(url!)
         }

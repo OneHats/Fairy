@@ -123,7 +123,7 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         pageControl?.currentPage = page % dataArray.count
         
         if page == 0 || Int(page) == totalPage - 1 {
-            collectionView?.scrollToItem(at: IndexPath(item: totalPage / 2, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
+            collectionView?.scrollToItem(at: IndexPath(item: totalPage / 2, section: 0), at: UICollectionView.ScrollPosition.left, animated: false)
         }
     }
     
@@ -138,10 +138,10 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         if currentPage >= totalPage {
             currentPage = totalPage / 2
             
-            collectionView?.scrollToItem(at: IndexPath(item: currentPage - 1, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
-            collectionView?.scrollToItem(at: IndexPath(item: currentPage, section: 0), at: UICollectionViewScrollPosition.left, animated: true)
+            collectionView?.scrollToItem(at: IndexPath(item: currentPage - 1, section: 0), at: UICollectionView.ScrollPosition.left, animated: false)
+            collectionView?.scrollToItem(at: IndexPath(item: currentPage, section: 0), at: UICollectionView.ScrollPosition.left, animated: true)
         } else {
-            collectionView?.scrollToItem(at: IndexPath(item: currentPage, section: 0), at: UICollectionViewScrollPosition.left, animated: true)
+            collectionView?.scrollToItem(at: IndexPath(item: currentPage, section: 0), at: UICollectionView.ScrollPosition.left, animated: true)
         }
         
         pageControl?.currentPage = currentPage % dataArray.count
@@ -150,7 +150,7 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     func openTimer() {
         if dataArray.count > 1 {
             timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(autoScroll), userInfo: nil, repeats: true)
-            RunLoop().add(timer!, forMode: RunLoopMode.commonModes)
+            RunLoop().add(timer!, forMode: RunLoop.Mode.common)
         }
     }
     

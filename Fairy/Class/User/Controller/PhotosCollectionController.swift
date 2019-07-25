@@ -24,7 +24,7 @@ class PhotosCollectionController: UIViewController,UICollectionViewDataSource {
             let flowLayout = UICollectionViewFlowLayout()
             
             flowLayout.itemSize = CGSize(width: (Screen_W - 30) / 2.0, height: (Screen_W - 30) / 2.0)
-            flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
+            flowLayout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
             
             collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
             collectionView?.backgroundColor = UIColor.white

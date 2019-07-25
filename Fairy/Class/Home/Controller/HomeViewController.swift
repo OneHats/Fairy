@@ -47,7 +47,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     //MARK:
     private func setSubView() {
-        bannerView = BannerScrollView(frame: CGRect(x: 0, y: 64, width: Screen_W, height: Screen_W * 0.24))
+        bannerView = BannerScrollView(frame: CGRect(x: 0, y: StatusBar_H + Nav_H, width: Screen_W, height: Screen_W * 0.24))
         bannerView?.clickBlock = { link in
             let controller = WebViewController()
             controller.hidesBottomBarWhenPushed = true
@@ -56,19 +56,21 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         }
         view.addSubview(bannerView!)
         
-        tableView = UITableView(frame: CGRect(x: 0, y: (bannerView?.frame.maxY)! + 10, width: Screen_W, height: Screen_H - 123 - Screen_W * 0.24), style: .plain)
+        let tableViewY = (bannerView?.frame.maxY)! + 10
+        tableView = UITableView(frame: CGRect(x: 0, y: tableViewY, width: Screen_W, height: Screen_H - tableViewY - Bottom_H - 49), style: .plain)
+//        tableView?.backgroundColor = UIColor.red
 //        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView?.dataSource = self
         tableView?.delegate = self
         tableView?.rowHeight = 50
         tableView?.layoutMargins = UIEdgeInsets.zero
         tableView?.separatorInset = UIEdgeInsets.zero
-        tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView?.separatorStyle = UITableViewCell.SeparatorStyle.none
         view.addSubview(tableView!)
         
         refreshControl = UIRefreshControl(frame: CGRect.zero)
         refreshControl?.attributedTitle = NSAttributedString(string: "加载中")
-        refreshControl?.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
+        refreshControl?.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
         tableView?.addSubview(refreshControl!)
     }
     
@@ -97,7 +99,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "cell")
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "cell")
         }
         
         var imageV = cell?.contentView.viewWithTag(1111) as? UIImageView

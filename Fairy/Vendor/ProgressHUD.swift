@@ -63,7 +63,7 @@ class ProgressHUD: UIView {
         }
         
         var hud:ProgressHUD
-        if text != nil && text?.characters.count != 0 {
+        if text != nil && text?.count != 0 {
             hud = ProgressHUD(backView: backView!, mode: .CustomeView)
             hud.text = text!
         } else {
@@ -140,7 +140,7 @@ class ProgressHUD: UIView {
         contentView.backgroundColor = KBackgroundColor
         addSubview(contentView)
         
-        indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        indicatorView = UIActivityIndicatorView(style: .whiteLarge)
         indicatorView?.color = UIColor.gray
         indicatorView?.startAnimating()
         contentView.addSubview(indicatorView!)
@@ -185,7 +185,7 @@ class ProgressHUD: UIView {
     //MARK:
     private func hideHudAfterDealy(dealyTime:TimeInterval) {
         timer = Timer.scheduledTimer(timeInterval: dealyTime, target: self, selector: #selector(hideAnimated), userInfo: nil, repeats: false)
-        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
     }
     
     @objc private func hideAnimated() {
@@ -203,7 +203,7 @@ class ProgressHUD: UIView {
         let textS = NSString(string: (textLabel?.text)!)
         let size = textS.boundingRect(with: CGSize(width: frame.width * 0.8, height: 0.0),
                                       options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                      attributes: [NSAttributedStringKey.font: textLabel?.font! as Any],
+                                      attributes: [NSAttributedString.Key.font: textLabel?.font! as Any],
                                       context: nil).size
         return size
     }

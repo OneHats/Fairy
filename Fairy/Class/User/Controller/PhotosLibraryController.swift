@@ -52,7 +52,7 @@ class PhotosLibraryController: UIViewController,UITableViewDataSource,UITableVie
     func addSubView() {
         dataArray = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.albumRegular, options: nil)
         
-        tableView = UITableView(frame: view.bounds, style: UITableViewStyle.plain)
+        tableView = UITableView(frame: view.bounds, style: UITableView.Style.plain)
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView?.dataSource = self
         tableView?.delegate = self
