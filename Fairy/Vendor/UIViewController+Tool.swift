@@ -28,7 +28,8 @@ extension UIViewController {
     private func openSetting() {
         let url = URL(string: UIApplication.openSettingsURLString)
         if UIApplication.shared.canOpenURL(url!) {
-            UIApplication.shared.openURL(url!)
+            UIApplication.shared.open(url!, options: [:]) { _ in
+            }
         }
     }
     

@@ -184,16 +184,15 @@ class ProgressHUD: UIView {
     
     //MARK:
     private func hideHudAfterDealy(dealyTime:TimeInterval) {
-        timer = Timer.scheduledTimer(timeInterval: dealyTime, target: self, selector: #selector(hideAnimated), userInfo: nil, repeats: false)
-        RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + dealyTime) {
+            self.hideAnimated()
+        }
     }
     
     @objc private func hideAnimated() {
         UIView.animate(withDuration: 0.3, animations: {
             self.contentView.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
-        }) { (flag) in
-            self.timer?.invalidate()
-            self.timer = nil
+        }) { _ in
             self.removeFromSuperview()
         }
     }

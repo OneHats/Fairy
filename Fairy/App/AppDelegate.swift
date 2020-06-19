@@ -20,8 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         setNavigationBar()
+        launchController()
         
         return true
+    }
+    
+    func launchController() {
+        let launchVC = LaunchViewController()
+        launchVC.launchFinish = {
+            self.window?.rootViewController = RootViewController()
+        }
+        window?.rootViewController = launchVC
     }
     
     func setNavigationBar() {

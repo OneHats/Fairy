@@ -1,0 +1,6 @@
+framework module KSChart {
+  umbrella header "KSChart-umbrella.h"
+
+  export *
+  module * { export * }
+}

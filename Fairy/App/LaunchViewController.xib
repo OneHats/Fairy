@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LaunchViewController" customModule="Icncde" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeQ-0g-uxK">
+                    <rect key="frame" x="0.0" y="734" width="414" height="128"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchBottom" translatesAutoresizingMaskIntoConstraints="NO" id="XWG-B8-KP5">
+                            <rect key="frame" x="148" y="48" width="118" height="32"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="WGK-oa-4fQ"/>
+                        <constraint firstItem="XWG-B8-KP5" firstAttribute="centerY" secondItem="jeQ-0g-uxK" secondAttribute="centerY" id="d75-9R-niO"/>
+                        <constraint firstItem="XWG-B8-KP5" firstAttribute="centerX" secondItem="jeQ-0g-uxK" secondAttribute="centerX" id="kfy-Am-OqG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="jeQ-0g-uxK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Rpv-ha-Rpt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jeQ-0g-uxK" secondAttribute="bottom" id="eyM-d0-HYg"/>
+                <constraint firstAttribute="trailing" secondItem="jeQ-0g-uxK" secondAttribute="trailing" id="yfh-8p-YwO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139" y="153"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="LaunchBottom" width="118" height="32"/>
+    </resources>
+</document>

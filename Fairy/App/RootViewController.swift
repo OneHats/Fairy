@@ -35,17 +35,15 @@ class RootViewController: UITabBarController {
     
     private func networkMonitor()  {
         let networkManager = NetworkReachabilityManager(host: "www.baidu.com")
-        networkManager?.listener = { status in
-            
+        networkManager?.startListening(onUpdatePerforming: { status in
             switch status {
             case .notReachable:
                 ProgressHUD.showError(text: "网络已断开")
-            case .reachable(.wwan):
+            case .reachable(.cellular):
                 ProgressHUD.showSuccess(text: "正在使用手机网络")
             default: break
             }
-        }
-        networkManager?.startListening()
+        })
     }
 
     override func didReceiveMemoryWarning() {

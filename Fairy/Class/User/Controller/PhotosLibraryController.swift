@@ -33,10 +33,14 @@ class PhotosLibraryController: UIViewController,UITableViewDataSource,UITableVie
             PHPhotoLibrary.requestAuthorization({ status in
                 switch status {
                 case .authorized:
-                    self.addSubView()
+                    DispatchQueue.main.async {
+                        self.addSubView()
+                    }
                     
                 case .denied:
-                    ProgressHUD.showError(text: "已经禁用")
+                    DispatchQueue.main.async {
+                        ProgressHUD.showError(text: "已经禁用")
+                    }
                     
                 default:
                     break
