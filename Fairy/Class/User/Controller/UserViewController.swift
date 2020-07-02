@@ -26,6 +26,19 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
         tableView?.layoutMargins = UIEdgeInsets.zero
         tableView?.separatorInset = UIEdgeInsets.zero
         view.addSubview(tableView!)
+        
+        navigationItem.title = UserManager.share.userInfo.nickName
+        
+        rightItemWith(style: UIBarButtonItem.SystemItem.action)
+    }
+    
+    override func rightItemClick() {
+//        UserManager.share.logout()
+        
+        let loginVC = LoginViewController()
+        loginVC.modalPresentationStyle = .fullScreen
+        present(loginVC, animated: true) {
+        }
     }
     
     //MARK:

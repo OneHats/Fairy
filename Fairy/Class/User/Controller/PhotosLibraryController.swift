@@ -27,7 +27,8 @@ class PhotosLibraryController: UIViewController,UITableViewDataSource,UITableVie
             addSubView()
             
         case .denied:
-            ProgressHUD.showError(text: "已经禁用")
+            print("已经禁用")
+//            ProgressHUD.showError(text: "已经禁用")
             
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization({ status in
@@ -39,7 +40,7 @@ class PhotosLibraryController: UIViewController,UITableViewDataSource,UITableVie
                     
                 case .denied:
                     DispatchQueue.main.async {
-                        ProgressHUD.showError(text: "已经禁用")
+//                        ProgressHUD.showError(text: "已经禁用")
                     }
                     
                 default:

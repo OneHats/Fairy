@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Kingfisher
 
 class LiveInfoController: UIViewController {
@@ -26,7 +25,7 @@ class LiveInfoController: UIViewController {
         
     }
     
-    func rightItemClick() {
+    override func rightItemClick() {
         self.navigationController?.popViewController(animated: true)
     }
     

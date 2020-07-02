@@ -20,7 +20,7 @@ class WebViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         if urlString != nil {
-            webView = WKWebView(frame: CGRect(x: 0, y: 0, width: Screen_W, height: Screen_H))
+            webView = WKWebView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight))
             view.addSubview(webView!)
             
             let url = URL(string: urlString!)

@@ -9,7 +9,6 @@
 import UIKit
 import PullToRefresh
 import Segmentio
-import SwiftyJSON
 
 class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelegate {
     
@@ -26,13 +25,12 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
-        let hot = DataBase.share.getCFDHotTopTen()
-        dataList = hot
+        SocketManager.share.delegate = self
         
         tableView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         tableView.register(UINib.init(nibName: "CFDListViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.rowHeight = 148
-        tableView.sectionHeaderHeight = 44
+        tableView.sectionHeaderHeight = 0.0
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
@@ -43,21 +41,27 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
         refresher.position = .top
         refresher.setEnable(isEnabled: true)
         tableView.addPullToRefresh(refresher) {
-            let hot = DataBase.share.getCFDHotTopTen()
-            self.dataList = hot
-//            self.tableView.reloadData()
-
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                self.tableView.endAllRefreshing()
-                self.tableView.reloadData()
-            }
-
+            self.requestCacheData()
         }
+        
+        requestCacheData()
     }
     
     func didAppear() {
         SocketManager.share.delegate = self
         connectTicker()
+    }
+    
+    func requestCacheData() {
+        DispatchQueue.global().async {
+            self.dataList = DataBase.share.getCFDHotTopTen()
+        }
+        
+        DispatchQueue.main.async {
+            self.tableView.endAllRefreshing()
+            self.tableView.reloadData()
+            self.connectTicker()
+        }
     }
     
     //MARK:
@@ -72,24 +76,6 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
         headerView.addSubview(assetView)
         
         return headerView
-    }
-    
-    //MARK:
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var section = tableView.dequeueReusableHeaderFooterView(withIdentifier: "section")
-        if section == nil {
-            section = UITableViewHeaderFooterView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 44))
-//            section!.backgroundColor = UIColor.clear
-//            section!.backgroundView = UIColor.clear
-            
-            let titles = DataBase.share.getCFDTypes()
-            let segmetFrame = CGRect(x: 0, y: 0, width: ScreenWidth, height: 44)
-            let segmet = Segmentio.initWithTitles(titles: titles,frame: segmetFrame)
-            segmet.selectedSegmentioIndex = 0
-            section?.addSubview(segmet)
-        }
-        
-        return section
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -132,20 +118,29 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
     
     //MARK:
     func connectTicker() {
-        return;
-        let indexPath = tableView.indexPathsForVisibleRows
         
+        let indexPath = tableView.indexPathsForVisibleRows
         if indexPath?.count == 0 {
+            return
+        }
+        
+        guard let dataList = dataList else {
             return
         }
         
         var codeList : [String] = []
         for k in 0...indexPath!.count-1 {
-            let model = dataList?[k]
+            let model = dataList[k]
             
-            let arr = model!.code.split(separator: "_")
-            let code = arr.dropLast().joined(separator: "_")
-            codeList.append(code)
+            let k = model.code.lastIndex(of: "_")
+            if let k = k {
+                let code = model.code.prefix(upTo: k)
+                codeList.append(String(code))
+            }
+            
+//            let arr = model!.code.split(separator: "_")
+//            let code = arr.dropLast().joined(separator: "_")
+//            codeList.append(code)
         }
         
         SocketManager.share.subscribeTicker(codeArray: codeList)
@@ -184,6 +179,9 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
         if event == "subscribe.pline" {
             let pline = JsonData["data"]["plines"]
             let code = JsonData["data"]["code"].stringValue
+            if pline.array?.count == 0 {
+                return
+            }
             
             var tempArray : [String] = []
             for k in 0...pline.count - 1 {
@@ -212,56 +210,5 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
         
     }
     
-    func didReceive(socketData: [String : Any]) {
-//        let channel = socketData["channel"] as! String
-//        
-//        if channel != ChannelPlineTicker {
-//            return
-//        }
-        
-        let code = socketData["code"] as! String
-        if code.count == 0 {
-            return
-        }
-        
-        let plineTicker = socketData["data"] as! [String:Any]
-        let tickArray = plineTicker["ticker"] as! [Any]
-        if tickArray.count != 0 {
-//            let ticker = MarketTicker.modelWithArray(array: tickArray)
-//            MarketManager.share.ticketInfo[code] = ticker
-        }
-        
-        //pline
-        let pline = plineTicker["pline"] as! [Any]
-        if pline.count != 0 {
-            var tempArray : [String] = []
-            for k in 0...pline.count - 1 {
-                let price = (pline[k] as! [Any]).last
-                if price is String {
-                    tempArray.append(price as! String)
-                } else if price is NSNumber {
-                    tempArray.append((price as! NSNumber).stringValue)
-                }
-            }
-            
-            MarketManager.share.plineInfo[code] = tempArray
-        }
-        
-        DispatchQueue.main.async {
-            let cells = self.tableView.visibleCells
-            for cell in cells {
-                let cfdCell = cell as! CFDListViewCell
-                let cellCode = cfdCell.contractInfo?.code
-                
-                if cellCode == code {
-                    cfdCell.loadTicker()
-                    
-                    cfdCell.loadLayer()
-                    return
-                }
-            }
-        }
-        
-        
-    }
+    
 }

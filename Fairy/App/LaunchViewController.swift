@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import Moya
 
 class LaunchViewController: UIViewController {
 
@@ -88,15 +86,13 @@ class LaunchViewController: UIViewController {
                 if var dict = contract.dictionaryObject {
                     let commodity = contract["commodity"].stringValue
                     let imageStr = icons[commodity].stringValue
-                    
                     dict["icon"] = imageStr
                     
                     array.append(JSON(dict))
                 }
             }
             
-            DataBase.share.updateContract(datas: array)
-//            DataBase.share.updateContractArray(datas: array)
+//            DataBase.share.updateContract(datas: array)
         }
         
 //        let target = MultiTarget(BaseService.BaseInstrumentList)

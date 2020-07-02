@@ -16,7 +16,6 @@
 		1B2DC70B1EFA052A00897F12 /* PhotosCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DC70A1EFA052A00897F12 /* PhotosCollectionController.swift */; };
 		1B468A5B1EF7CFD000AD8711 /* ScanQRCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B468A5A1EF7CFD000AD8711 /* ScanQRCodeController.swift */; };
 		1B4D019E1EE7CD3F009AE905 /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D019D1EE7CD3F009AE905 /* ADModel.swift */; };
-		1B4D01A01EE7DC6D009AE905 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D019F1EE7DC6D009AE905 /* ProgressHUD.swift */; };
 		1BF77C691EE644A800E945F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF77C681EE644A800E945F3 /* Assets.xcassets */; };
 		1BF77C6C1EE644A800E945F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF77C6A1EE644A800E945F3 /* LaunchScreen.storyboard */; };
 		1BF77C771EE644A800E945F3 /* FairyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C761EE644A800E945F3 /* FairyTests.swift */; };
@@ -24,8 +23,10 @@
 		1BF77C8A1EE647CC00E945F3 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C891EE647CC00E945F3 /* RootViewController.swift */; };
 		1BF77C8C1EE647E100E945F3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C8B1EE647E100E945F3 /* HomeViewController.swift */; };
 		1BF77C8E1EE647F400E945F3 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C8D1EE647F400E945F3 /* UserViewController.swift */; };
-		1BF77C921EE649D500E945F3 /* PrefixHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF77C911EE649D500E945F3 /* PrefixHeader.swift */; };
 		265D1A2EB5E885406FE90E1E /* Pods_Fairy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E871622DF2A715E032058366 /* Pods_Fairy.framework */; };
+		C4154FAC24A3217B0054F581 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4154FAE24A3217B0054F581 /* InfoPlist.strings */; };
+		C4154FB124A34CE60054F581 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4154FB024A34CE60054F581 /* UserModel.swift */; };
+		C4154FB324A34CF80054F581 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4154FB224A34CF80054F581 /* UserManager.swift */; };
 		C4874839249A04A100CF7AF7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4874836249A04A100CF7AF7 /* UserService.swift */; };
 		C487483A249A04A100CF7AF7 /* NetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4874837249A04A100CF7AF7 /* NetWorkManager.swift */; };
 		C487483B249A04A100CF7AF7 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4874838249A04A100CF7AF7 /* BaseService.swift */; };
@@ -35,7 +36,7 @@
 		C4874846249A065600CF7AF7 /* Dictionary+Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4874840249A065500CF7AF7 /* Dictionary+Tool.swift */; };
 		C4874847249A065600CF7AF7 /* String+Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4874841249A065500CF7AF7 /* String+Tool.swift */; };
 		C4874848249A065600CF7AF7 /* UIColor+Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4874842249A065500CF7AF7 /* UIColor+Tool.swift */; };
-		C487484A249A068100CF7AF7 /* AppConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4874849249A068000CF7AF7 /* AppConfigure.swift */; };
+		C487484A249A068100CF7AF7 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4874849249A068000CF7AF7 /* AppTheme.swift */; };
 		C4874874249A0DBC00CF7AF7 /* KSChartConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C487484D249A0DBB00CF7AF7 /* KSChartConfigure.swift */; };
 		C4874875249A0DBC00CF7AF7 /* KSChartStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C487484E249A0DBB00CF7AF7 /* KSChartStyles.swift */; };
 		C4874876249A0DBC00CF7AF7 /* KSSeriesParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = C487484F249A0DBB00CF7AF7 /* KSSeriesParam.swift */; };
@@ -79,6 +80,8 @@
 		C48748B0249A122700CF7AF7 /* LaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48748AE249A122700CF7AF7 /* LaunchViewController.xib */; };
 		C48748B1249A122700CF7AF7 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48748AF249A122700CF7AF7 /* LaunchViewController.swift */; };
 		C48748B3249A140E00CF7AF7 /* MiaoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48748B2249A140E00CF7AF7 /* MiaoService.swift */; };
+		C49D7DD624A18B4900952D53 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C49D7DD424A18B4900952D53 /* LoginViewController.xib */; };
+		C49D7DD724A18B4900952D53 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D7DD524A18B4900952D53 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,11 +104,9 @@
 		1B2DC70A1EFA052A00897F12 /* PhotosCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionController.swift; sourceTree = "<group>"; };
 		1B468A5A1EF7CFD000AD8711 /* ScanQRCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRCodeController.swift; sourceTree = "<group>"; };
 		1B4D019D1EE7CD3F009AE905 /* ADModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
-		1B4D019F1EE7DC6D009AE905 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		1BF77C5E1EE644A800E945F3 /* Fairy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fairy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF77C681EE644A800E945F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		1BF77C6B1EE644A800E945F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1BF77C6D1EE644A800E945F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		1BF77C721EE644A800E945F3 /* FairyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FairyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF77C761EE644A800E945F3 /* FairyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairyTests.swift; sourceTree = "<group>"; };
 		1BF77C781EE644A800E945F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,9 +114,13 @@
 		1BF77C891EE647CC00E945F3 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		1BF77C8B1EE647E100E945F3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1BF77C8D1EE647F400E945F3 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		1BF77C911EE649D500E945F3 /* PrefixHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefixHeader.swift; sourceTree = "<group>"; };
 		66FFEC948F9DB1C8CF0799BC /* Pods-Fairy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fairy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fairy/Pods-Fairy.release.xcconfig"; sourceTree = "<group>"; };
 		B825A2CA40F99F2EF8DD2BF1 /* Pods-Fairy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fairy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fairy/Pods-Fairy.debug.xcconfig"; sourceTree = "<group>"; };
+		C4154FA624A31FC80054F581 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4154FAD24A3217B0054F581 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C4154FAF24A3218D0054F581 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		C4154FB024A34CE60054F581 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		C4154FB224A34CF80054F581 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		C4874836249A04A100CF7AF7 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		C4874837249A04A100CF7AF7 /* NetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkManager.swift; sourceTree = "<group>"; };
 		C4874838249A04A100CF7AF7 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
@@ -125,7 +130,7 @@
 		C4874840249A065500CF7AF7 /* Dictionary+Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Tool.swift"; sourceTree = "<group>"; };
 		C4874841249A065500CF7AF7 /* String+Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Tool.swift"; sourceTree = "<group>"; };
 		C4874842249A065500CF7AF7 /* UIColor+Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Tool.swift"; sourceTree = "<group>"; };
-		C4874849249A068000CF7AF7 /* AppConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigure.swift; sourceTree = "<group>"; };
+		C4874849249A068000CF7AF7 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		C487484D249A0DBB00CF7AF7 /* KSChartConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSChartConfigure.swift; sourceTree = "<group>"; };
 		C487484E249A0DBB00CF7AF7 /* KSChartStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSChartStyles.swift; sourceTree = "<group>"; };
 		C487484F249A0DBB00CF7AF7 /* KSSeriesParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSSeriesParam.swift; sourceTree = "<group>"; };
@@ -169,6 +174,8 @@
 		C48748AE249A122700CF7AF7 /* LaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchViewController.xib; sourceTree = "<group>"; };
 		C48748AF249A122700CF7AF7 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		C48748B2249A140E00CF7AF7 /* MiaoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiaoService.swift; sourceTree = "<group>"; };
+		C49D7DD424A18B4900952D53 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		C49D7DD524A18B4900952D53 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E871622DF2A715E032058366 /* Pods_Fairy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fairy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -241,16 +248,16 @@
 		1BF77C811EE6473700E945F3 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				C4874849249A068000CF7AF7 /* AppConfigure.swift */,
 				1BF77C821EE6473700E945F3 /* AppDelegate.swift */,
+				C4874849249A068000CF7AF7 /* AppTheme.swift */,
 				1BF77C681EE644A800E945F3 /* Assets.xcassets */,
 				1B1D8DB61F0C856B0058A191 /* BaseViewController.swift */,
-				1BF77C6D1EE644A800E945F3 /* Info.plist */,
+				C4154FA624A31FC80054F581 /* Info.plist */,
 				1BF77C6A1EE644A800E945F3 /* LaunchScreen.storyboard */,
 				C48748AF249A122700CF7AF7 /* LaunchViewController.swift */,
 				C48748AE249A122700CF7AF7 /* LaunchViewController.xib */,
-				1BF77C911EE649D500E945F3 /* PrefixHeader.swift */,
 				1BF77C891EE647CC00E945F3 /* RootViewController.swift */,
+				C4154FAE24A3217B0054F581 /* InfoPlist.strings */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -261,6 +268,7 @@
 				C4874892249A113C00CF7AF7 /* CFD(差价) */,
 				1B1CB0441EE78942000F37F1 /* Common */,
 				1BF77C851EE647A400E945F3 /* Home */,
+				C49D7DD324A18B4900952D53 /* Login(登录) */,
 				1BF77C871EE647A400E945F3 /* User */,
 			);
 			path = Class;
@@ -289,6 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				1BF77C881EE647A400E945F3 /* Controller */,
+				C4154FB024A34CE60054F581 /* UserModel.swift */,
+				C4154FB224A34CF80054F581 /* UserManager.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -296,10 +306,10 @@
 		1BF77C881EE647A400E945F3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1BF77C8D1EE647F400E945F3 /* UserViewController.swift */,
-				1B468A5A1EF7CFD000AD8711 /* ScanQRCodeController.swift */,
-				1B11520B1EF91C0600C0AA66 /* PhotosLibraryController.swift */,
 				1B2DC70A1EFA052A00897F12 /* PhotosCollectionController.swift */,
+				1B11520B1EF91C0600C0AA66 /* PhotosLibraryController.swift */,
+				1B468A5A1EF7CFD000AD8711 /* ScanQRCodeController.swift */,
+				1BF77C8D1EE647F400E945F3 /* UserViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -312,8 +322,6 @@
 				C487486D249A0DBB00CF7AF7 /* DataBase */,
 				C4874870249A0DBC00CF7AF7 /* Market */,
 				C4874835249A04A100CF7AF7 /* NetWork */,
-				1B4D019F1EE7DC6D009AE905 /* ProgressHUD.swift */,
-				1B1152091EF8FD8600C0AA66 /* UIViewController+Tool.swift */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -349,12 +357,13 @@
 		C487483C249A065500CF7AF7 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				C487483D249A065500CF7AF7 /* SegmentView.swift */,
-				C487483E249A065500CF7AF7 /* UIView+Tool.swift */,
-				C487483F249A065500CF7AF7 /* UIImage+Tool.swift */,
 				C4874840249A065500CF7AF7 /* Dictionary+Tool.swift */,
+				C487483D249A065500CF7AF7 /* SegmentView.swift */,
 				C4874841249A065500CF7AF7 /* String+Tool.swift */,
 				C4874842249A065500CF7AF7 /* UIColor+Tool.swift */,
+				C487483F249A065500CF7AF7 /* UIImage+Tool.swift */,
+				C487483E249A065500CF7AF7 /* UIView+Tool.swift */,
+				1B1152091EF8FD8600C0AA66 /* UIViewController+Tool.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -467,8 +476,8 @@
 		C4874870249A0DBC00CF7AF7 /* Market */ = {
 			isa = PBXGroup;
 			children = (
-				C4874871249A0DBC00CF7AF7 /* MarketManager.swift */,
 				C4874872249A0DBC00CF7AF7 /* MarketConfigure.swift */,
+				C4874871249A0DBC00CF7AF7 /* MarketManager.swift */,
 				C4874873249A0DBC00CF7AF7 /* SocketManager.swift */,
 			);
 			path = Market;
@@ -515,6 +524,15 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		C49D7DD324A18B4900952D53 /* Login(登录) */ = {
+			isa = PBXGroup;
+			children = (
+				C49D7DD524A18B4900952D53 /* LoginViewController.swift */,
+				C49D7DD424A18B4900952D53 /* LoginViewController.xib */,
+			);
+			path = "Login(登录)";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -526,7 +544,6 @@
 				1BF77C5A1EE644A800E945F3 /* Sources */,
 				1BF77C5B1EE644A800E945F3 /* Frameworks */,
 				1BF77C5C1EE644A800E945F3 /* Resources */,
-				B80E6719C36B31EFDAC32B9F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -567,9 +584,8 @@
 				TargetAttributes = {
 					1BF77C5D1EE644A800E945F3 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 667L3Y3D6H;
 						LastSwiftMigration = 1030;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					1BF77C711EE644A800E945F3 = {
 						CreatedOnToolsVersion = 8.3.1;
@@ -587,6 +603,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 1BF77C551EE644A800E945F3;
 			productRefGroup = 1BF77C5F1EE644A800E945F3 /* Products */;
@@ -606,6 +623,8 @@
 			files = (
 				1BF77C6C1EE644A800E945F3 /* LaunchScreen.storyboard in Resources */,
 				1BF77C691EE644A800E945F3 /* Assets.xcassets in Resources */,
+				C49D7DD624A18B4900952D53 /* LoginViewController.xib in Resources */,
+				C4154FAC24A3217B0054F581 /* InfoPlist.strings in Resources */,
 				C48748B0249A122700CF7AF7 /* LaunchViewController.xib in Resources */,
 				C48748AB249A11E200CF7AF7 /* ShowAssetView.xib in Resources */,
 				C48748A0249A113C00CF7AF7 /* CFDListViewCell.xib in Resources */,
@@ -640,48 +659,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B80E6719C36B31EFDAC32B9F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fairy/Pods-Fairy-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/GzipSwift/Gzip.framework",
-				"${BUILT_PRODUCTS_DIR}/KSChart/KSChart.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Macaw/Macaw.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/PullToRefresher/PullToRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
-				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
-				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gzip.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KSChart.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Macaw.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullToRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fairy/Pods-Fairy-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -690,7 +667,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B2DC70B1EFA052A00897F12 /* PhotosCollectionController.swift in Sources */,
-				1BF77C921EE649D500E945F3 /* PrefixHeader.swift in Sources */,
 				C4874891249A0DBC00CF7AF7 /* SocketManager.swift in Sources */,
 				C4874874249A0DBC00CF7AF7 /* KSChartConfigure.swift in Sources */,
 				C4874888249A0DBC00CF7AF7 /* Date+KSExtensions.swift in Sources */,
@@ -700,7 +676,7 @@
 				1B1D8DB51F0C835B0058A191 /* LiveInfoController.swift in Sources */,
 				C4874883249A0DBC00CF7AF7 /* KSKLineChart.swift in Sources */,
 				C4874848249A065600CF7AF7 /* UIColor+Tool.swift in Sources */,
-				1B4D01A01EE7DC6D009AE905 /* ProgressHUD.swift in Sources */,
+				C4154FB124A34CE60054F581 /* UserModel.swift in Sources */,
 				1B1CB0461EE78968000F37F1 /* WebViewController.swift in Sources */,
 				C48748AA249A11E200CF7AF7 /* ShowAssetView.swift in Sources */,
 				C487489F249A113C00CF7AF7 /* CFDListViewCell.swift in Sources */,
@@ -739,10 +715,11 @@
 				C4874847249A065600CF7AF7 /* String+Tool.swift in Sources */,
 				C487487B249A0DBC00CF7AF7 /* KSSeries.swift in Sources */,
 				C4874882249A0DBC00CF7AF7 /* KSAxisModel.swift in Sources */,
-				C487484A249A068100CF7AF7 /* AppConfigure.swift in Sources */,
+				C487484A249A068100CF7AF7 /* AppTheme.swift in Sources */,
 				1BF77C8A1EE647CC00E945F3 /* RootViewController.swift in Sources */,
 				C4874886249A0DBC00CF7AF7 /* Double+KSExtensions.swift in Sources */,
 				C487488E249A0DBC00CF7AF7 /* DataBase.swift in Sources */,
+				C49D7DD724A18B4900952D53 /* LoginViewController.swift in Sources */,
 				C48748A1249A113C00CF7AF7 /* KSKChartView.swift in Sources */,
 				C4874890249A0DBC00CF7AF7 /* MarketConfigure.swift in Sources */,
 				C487489C249A113C00CF7AF7 /* CFDLineController.swift in Sources */,
@@ -751,6 +728,7 @@
 				C487488D249A0DBC00CF7AF7 /* ContractInfo.swift in Sources */,
 				1BF77C8C1EE647E100E945F3 /* HomeViewController.swift in Sources */,
 				C4874889249A0DBC00CF7AF7 /* CGFloat+KSExtensions.swift in Sources */,
+				C4154FB324A34CF80054F581 /* UserManager.swift in Sources */,
 				C4874877249A0DBC00CF7AF7 /* KSConstValue.swift in Sources */,
 				C487489D249A113C00CF7AF7 /* CFDViewController.swift in Sources */,
 				C487488B249A0DBC00CF7AF7 /* KSTimeChartModel.swift in Sources */,
@@ -783,6 +761,15 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		C4154FAE24A3217B0054F581 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4154FAD24A3217B0054F581 /* en */,
+				C4154FAF24A3218D0054F581 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -904,14 +891,16 @@
 			baseConfigurationReference = B825A2CA40F99F2EF8DD2BF1 /* Pods-Fairy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 667L3Y3D6H;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = Fairy/Info.plist;
+				INFOPLIST_FILE = Fairy/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dpf.Fairy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -921,14 +910,16 @@
 			baseConfigurationReference = 66FFEC948F9DB1C8CF0799BC /* Pods-Fairy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 667L3Y3D6H;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = Fairy/Info.plist;
+				INFOPLIST_FILE = Fairy/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dpf.Fairy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

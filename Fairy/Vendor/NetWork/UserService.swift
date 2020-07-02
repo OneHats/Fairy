@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import Moya
 
 enum UserService {
     case UserRegister
-    case UserLoginMobile
+    case UserLoginMobile(mobile:String,pwd:String)
     case UserLoginEmail(email:String,pwd:String)
+    case UserHomePageInfo(loginType:Int)
 }
 
 extension UserService : TargetType {
@@ -24,17 +24,21 @@ extension UserService : TargetType {
         switch self {
         case .UserRegister:
             return "user/register/standard"
-        case .UserLoginMobile:
+        case .UserLoginMobile(_):
             return "user/login/mobile"
         case .UserLoginEmail:
             return "user/login/email"
+        case .UserHomePageInfo(_):
+            return "user/home/page/info"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .UserRegister, .UserLoginMobile, .UserLoginEmail:
+        case .UserRegister, .UserLoginMobile(_), .UserLoginEmail:
             return .post
+        case .UserHomePageInfo(_):
+            return .get
         }
     }
     
@@ -46,23 +50,43 @@ extension UserService : TargetType {
         switch self {
         case let .UserLoginEmail(email, pwd):
             let parameter = ["loginName": email,
-                             "password":pwd.MD5(),
-            ]
+                             "password":pwd]
             
             return .requestParameters(parameters: parameter,
                                       encoding: JSONEncoding.default)
-        case .UserRegister,.UserLoginMobile: // Send no parameters
+            
+        case let .UserLoginMobile(mobile, pwd):
+            let parameter = ["loginName": mobile,
+                             "password":pwd,
+                             "sysVersion":"1000",
+                             "deviceId":"1",
+                             "deviceName":"1",
+                             "resolution":"1",
+                             "softwareVersion":"1",
+                             "deviceVersion":"1"]
+            return .requestParameters(parameters: parameter, encoding: URLEncoding.default)
+            
+        case let .UserHomePageInfo(loginType):
+            return .requestParameters(parameters: ["type":loginType], encoding: URLEncoding.default)
+            
+        case .UserRegister: // Send no parameters
             return .requestPlain
             
         }
     }
     
     var headers: [String : String]? {
-        return [
-            "Content-type": "application/json",
+        var header = [
             "Source-Site": "ios.jys",
-            "Content-Language": "zh-cn"
-        ]
+            "Content-Language": "zh-cn"]
+        header["Authorization"] = UserManager.share.token
+        return header
+        
+//        return [
+////            "Content-type": "application/json",
+//            "Source-Site": "ios.jys",
+//            "Content-Language": "zh-cn"
+//        ]
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Moya
 
 enum BaseService {
     case BaseSystemVersion(version: Int)
@@ -29,9 +28,9 @@ extension BaseService : TargetType {
         case .BaseBannerList(_):
             return "base/banner/list"
         case .BaseInstrumentList:
-            return "base/instrument/list"
+            return "base/wsc/instrumentList"
         case .BaseCommodityIcons:
-            return "base/commodity/icons"
+            return "base/wsc/commodityIcons"
         }
     }
     
@@ -59,7 +58,7 @@ extension BaseService : TargetType {
     
     var headers: [String : String]? {
         return [
-            "Content-type": "application/json",
+//            "Content-type": "application/json",
             "Source-Site": "ios.jys",
             "Content-Language": "zh-cn"
         ]

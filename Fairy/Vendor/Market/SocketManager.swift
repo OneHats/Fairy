@@ -9,10 +9,9 @@
 import UIKit
 import Starscream
 import Gzip
-import SwiftyJSON
 
 public protocol SocketDelegate: class {
-    func didReceive(socketData: [String:Any])
+//    func didReceive(socketData: [String:Any])
     func didReceive(JsonData: JSON)
 }
 
@@ -23,37 +22,52 @@ class SocketManager: NSObject,WebSocketDelegate {
     
     private var socket : WebSocket?
     private var isConnected = false
+    private let connectedMax = 6
+    private var connectedTimes = 0
     
     override init() {
-        
         super.init()
+    }
+    
+    func open() {
+        if socket != nil {
+            isConnected = false
+            socket?.disconnect()
+            socket = nil
+        }
+        
         var request = URLRequest(url: URL(string: BaseSocketUrl)!)
-        request.timeoutInterval = 15
+        request.timeoutInterval = 10
         socket = WebSocket(request: request)
         socket?.delegate = self
         socket?.callbackQueue = DispatchQueue(label: "Icncde.Socket.Queue")
-    }
-    
-    func connect() {
         socket?.connect()
     }
     
     //MARK:
-    func subscribeTime() {
+//    func subscribeTime() {
+//        if !isConnected {
+//            connect()
+//            return
+//        }
+//
+//        let dict = ["event":"subscribe.time"]
+//        let time = dict.jsonString()
+//        socket?.write(string: time) {
+//        }
+//    }
+    
+    func subscribePing() {
         if !isConnected {
-            connect()
+//            open()
             return
         }
-
-        let dict = ["event":"subscribe.time"]
-        let time = dict.jsonString()
-        socket?.write(string: time) {
-        }
+        let dict = ["event":"ping"]
+        socket?.write(ping: dict.jsonData())
     }
     
     func subscribeKline(code:String,period:String) {
         if !isConnected {
-            connect()
             return
         }
         
@@ -66,7 +80,6 @@ class SocketManager: NSObject,WebSocketDelegate {
     
     func subscribePline(codeArray:[String]) {
         if !isConnected {
-            connect()
             return
         }
         
@@ -81,7 +94,6 @@ class SocketManager: NSObject,WebSocketDelegate {
     //MARK:
     func subscribeTicker(codeArray:[String]) {
         if !isConnected {
-            connect()
             return
         }
         
@@ -109,7 +121,6 @@ class SocketManager: NSObject,WebSocketDelegate {
     
     func subscribePlinesTickerArray(codeList:[String]) {
         if !isConnected {
-            connect()
             return
         }
         
@@ -131,17 +142,17 @@ class SocketManager: NSObject,WebSocketDelegate {
         switch event {
         case .connected( _):
             isConnected = true
-            subscribeTime()
-//            print("websocket is connected: \(headers)")
+            subscribePing()
+            print("websocket: \(client.request.url!.absoluteString)")
             
         case .disconnected(let reason, let code):
             isConnected = false
             print("websocket is disconnected: \(reason) with code: \(code)")
             
-        case .text(let string):
-            
-            guard let sDelegate = delegate else { break }
-            sDelegate.didReceive(socketData: string.jsonObject())
+        case .text(_):
+            break
+//            guard let sDelegate = delegate else { break }
+//            sDelegate.didReceive(socketData: string.jsonObject())
             
         case .binary(let data):
 //            print("Received data: \(data.count)")
@@ -161,20 +172,26 @@ class SocketManager: NSObject,WebSocketDelegate {
             
             guard let sDelegate = delegate else { break }
             sDelegate.didReceive(JsonData: result)
+            break
             
         case .ping(_):
             break
         case .pong(_):
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 20) {
+                self.subscribePing()
+            }
             break
         case .viabilityChanged(_):
+//            print("viabilityChanged")
             break
         case .reconnectSuggested(_):
             break
         case .cancelled:
             isConnected = false
+            break
         case .error(let error):
             isConnected = false
-            print(String(describing: error))
+            print("sockerError"+String(describing: error))
         }
         
     }

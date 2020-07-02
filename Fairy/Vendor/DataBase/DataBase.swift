@@ -8,7 +8,6 @@
 
 import UIKit
 import SQLite
-import SwiftyJSON
 
 class DataBase: NSObject {
 
@@ -31,12 +30,14 @@ class DataBase: NSObject {
     let tag = Expression<String>("tag")
     let symbol = Expression<String>("symbol")
     let icon = Expression<String>("icon")
+    let circulation = Expression<String>("circulation")
+    
 //    let lowMargin = Expression<String>("lowMargin")
     
     override init() {
         let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
         let path = documents! + "/db.sqlite"
-        print(path)
+//        print(path)
         
         db = try? Connection(path)
         contract = Table("contract")
@@ -46,11 +47,11 @@ class DataBase: NSObject {
     }
     
     func openDB() {
-        if !canOperation() {
+        guard let db = db else {
             return
         }
         
-        _ = try? db!.run(contract.create(block: { t in
+        _ = try? db.run(contract.create(ifNotExists:true,block: { t in
             t.column(code,unique: true)
             t.column(name)
             t.column(currency)
@@ -62,16 +63,16 @@ class DataBase: NSObject {
             t.column(symbol)
             t.column(icon)
         }))
-        
-//        _ = try? db?.run(contract.addColumn(icon, defaultValue: ""))
+//        _ = try? db.run(contract.addColumn(circulation, defaultValue: "0"))
     }
     
     //MARK:
     func updateContract(datas:[JSON]) {
-        if datas.count == 0 || !canOperation() {
+        guard let db = db else {
             return
         }
         
+        _ = try? db.run(contract.delete())
         for k in datas {
             let insert = contract.insert(code <- k["code"].stringValue,
                                          name <- k["name"].stringValue,
@@ -82,48 +83,27 @@ class DataBase: NSObject {
                                          exType <- k["exType"].stringValue,
                                          tag <- k["tag"].stringValue,
                                          symbol <- k["symbol"].stringValue,
-                                         icon <- k["icon"].stringValue
+                                         icon <- k["icon"].stringValue,
+                                         circulation <- k["circulation"].stringValue
             )
-            _ = try? db!.run(insert)
+            _ = try? db.run(insert)
         }
         
     }
     
-//    func updateContractArray(datas:[[String:Any]]) {
-//        let list = datas
-//        if list.count == 0 || !canOperation() {
-//            return
-//        }
-//        
-//        for k in list {
-//            let insert = contract.insert(code <- k["code"].stringValue,
-//                                         name <- k["name"].stringValue,
-//                                         currency <- k["currency"].stringValue,
-//                                         commodity <- k["commodity"].stringValue,
-//                                         country <- k["country"].stringValue,
-//                                         type <- k["type"].stringValue,
-//                                         exType <- k["exType"].stringValue,
-//                                         tag <- k["tag"].stringValue,
-//                                         symbol <- k["symbol"].stringValue,
-//                                         icon <- k["icon"].stringValue
-//            )
-//            _ = try? db!.run(insert)
-//        }
-//        
-//    }
-    
     //MARK:
     func getCFDHotTopTen() -> [ContractInfo] {
-        if !canOperation() {
+        guard let db = db else {
             return []
         }
         
-//        let hot = contract.filter(country == "USA")
-        let hot = contract.filter(exType == "CFD" && type == "ENCRY")
+//        let hot = contract.filter(type == "ENCRY")
+        guard let result = try? db.prepare(contract) else {
+            return []
+        }
         
         var arr = [ContractInfo]()
-        for contract in try! db!.prepare(hot) {
-            
+        for contract in result {
             let obj = ContractInfo()
             obj.code = contract[code]
             obj.name = contract[name]
@@ -134,6 +114,7 @@ class DataBase: NSObject {
             obj.tag = contract[tag]
             obj.symbol = contract[symbol]
             obj.icon = contract[icon]
+            obj.circulation = contract[circulation]
             
             arr.append(obj)
         }
@@ -142,14 +123,18 @@ class DataBase: NSObject {
     }
     
     func getCFDTypes() -> [String] {
-        if !canOperation() {
+        guard let db = db else {
             return []
         }
         
         let hot = contract.group(type)
-        
         var arr = [String]()
-        for contract in try! db!.prepare(hot) {
+        
+        guard let result = try? db.prepare(hot) else {
+            return []
+        }
+        
+        for contract in result {
             arr.append(contract[type])
         }
         

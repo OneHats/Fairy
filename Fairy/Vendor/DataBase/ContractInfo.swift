@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class ContractInfo: NSObject {
     
@@ -29,6 +28,9 @@ class ContractInfo: NSObject {
     
     var symbol : String = ""
     
+    var circulation : String = ""
+    
+    
     var icon : String = ""
     
     var iconValue : String {
@@ -41,16 +43,15 @@ class ContractInfo: NSObject {
         }
     }
     
-    
-    
-//    var lowMargin : [String] = []
-    
-    
     convenience init(json:JSON) {
         self.init()
         name = json["name"].stringValue
         code = json["code"].stringValue
-        country = json["country"].stringValue
+        commodity = json["commodity"].stringValue
+        circulation = json["circulation"].stringValue
+        icon = json["icon"].stringValue
+        
+//        country = json["country"].stringValue
     }
     
     static func arrayWith(json:JSON) -> Array<ContractInfo> {

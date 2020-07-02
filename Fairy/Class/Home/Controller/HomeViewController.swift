@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import Moya
 import Kingfisher
 
 class HomeViewController: UIViewController {
@@ -25,7 +23,8 @@ class HomeViewController: UIViewController {
         view.backgroundColor = UIColor.white
         automaticallyAdjustsScrollViewInsets = false
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(rightItemClick))
+        self.rightItemWith(title: "看来", color: .white)
+        self.rightItemWith(style: .add)
         
 //        setSubView()
         cfdView = CFDListView.init(frame: CGRect(x: 0, y: NavigationBarH, width: ScreenWidth, height: ScreenHeight - NavigationBarH-TabBarH - BottomH))
@@ -40,9 +39,15 @@ class HomeViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        cfdView?.didAppear()
+    }
+    
     //MARK:
     private func setSubView() {
-        bannerView = BannerScrollView(frame: CGRect(x: 0, y: StatusBar_H + Nav_H, width: Screen_W, height: Screen_W * 0.24))
+        bannerView = BannerScrollView(frame: CGRect(x: 0, y: NavigationBarH, width: ScreenWidth, height: ScreenWidth * 0.24))
         bannerView?.clickBlock = { link in
             let controller = WebViewController()
             controller.hidesBottomBarWhenPushed = true
@@ -52,10 +57,8 @@ class HomeViewController: UIViewController {
         view.addSubview(bannerView!)
     }
     
-    @objc private func rightItemClick() {
-        let controller = LiveInfoController()
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(controller, animated: true)
+    override func rightItemClick() {
+        self.showAuthorizationStatusDeniedAlert(title: "GO")
     }
     
     override func didReceiveMemoryWarning() {

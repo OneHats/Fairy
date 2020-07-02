@@ -27,7 +27,7 @@ class ScanQRCodeController: UIViewController {
             showScanView()
             
         } else if (status == AVAuthorizationStatus.denied) {
-            showAuthorizationStatusDeniedAlert(message: "没有访问权限")
+            showAuthorizationStatusDeniedAlert(title: "没有访问权限")
             
         } else if (status == AVAuthorizationStatus.notDetermined) {
             AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (flag) in

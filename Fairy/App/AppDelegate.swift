@@ -12,15 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    private var bgTask : UIBackgroundTaskIdentifier?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = RootViewController()
-        window?.makeKeyAndVisible()
-        
         setNavigationBar()
+        SocketManager.share.open()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
         launchController()
+        window?.makeKeyAndVisible()
         
         return true
     }
@@ -28,7 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func launchController() {
         let launchVC = LaunchViewController()
         launchVC.launchFinish = {
-            self.window?.rootViewController = RootViewController()
+            if UserManager.share.login {
+                self.window?.rootViewController = RootViewController()
+                return;
+            }
+            
+            let loginVC = LoginViewController()
+            loginVC.loginSuccessBlock = {
+                self.window?.rootViewController = RootViewController()
+            }
+            self.window?.rootViewController = loginVC
         }
         window?.rootViewController = launchVC
     }
@@ -36,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setNavigationBar() {
         UINavigationBar.appearance().barStyle = UIBarStyle.black
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().barTintColor = KBaseBlueColor
+        UINavigationBar.appearance().barTintColor = ThemeColorBlue
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor:UIColor.white]
         
@@ -53,10 +63,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        let bgTaskInvalid = UIBackgroundTaskIdentifier.invalid
+        bgTask = application.beginBackgroundTask(withName: "Icncde") {
+            if self.bgTask != bgTaskInvalid {
+                application.endBackgroundTask(self.bgTask!)
+                self.bgTask = bgTaskInvalid
+            }
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        if self.bgTask != UIBackgroundTaskIdentifier.invalid {
+            application.endBackgroundTask(self.bgTask!)
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

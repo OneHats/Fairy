@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Kingfisher
 
 private let reuseIdentifier = "Cell"
@@ -30,6 +29,17 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    var pageTintColor : UIColor = UIColor() {
+        didSet {
+            pageControl?.pageIndicatorTintColor = pageTintColor
+        }
+    }
+    var pageTintColorCurrent : UIColor = UIColor() {
+        didSet {
+            pageControl?.currentPageIndicatorTintColor = pageTintColorCurrent
+        }
+    }
+    
     var clickBlock:ADClickBlock?//点击回调
     
     private var collectionView:UICollectionView?
@@ -42,7 +52,6 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = KBaseBlueColor
         
         initilizeSubview()
     }
@@ -57,15 +66,14 @@ class BannerScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.showsHorizontalScrollIndicator = false
-        collectionView?.backgroundColor = KBackgroundColor
         collectionView?.isPagingEnabled = true
         collectionView?.dataSource = self
         collectionView?.delegate = self
         addSubview(collectionView!)
         
         pageControl = UIPageControl()
-        pageControl?.pageIndicatorTintColor = KBackgroundColor
-        pageControl?.currentPageIndicatorTintColor = KBaseBlueColor
+        pageControl?.pageIndicatorTintColor = UIColor.white
+        pageControl?.currentPageIndicatorTintColor = UIColor.lightGray
         pageControl?.center = CGPoint(x: frame.width * 0.5, y: frame.height - 10)
         addSubview(pageControl!)
     }

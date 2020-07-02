@@ -23,7 +23,7 @@ class PhotosCollectionController: UIViewController,UICollectionViewDataSource {
         if (fetchResult?.count)! > 0 {
             let flowLayout = UICollectionViewFlowLayout()
             
-            flowLayout.itemSize = CGSize(width: (Screen_W - 30) / 2.0, height: (Screen_W - 30) / 2.0)
+            flowLayout.itemSize = CGSize(width: (ScreenWidth - 30) / 2.0, height: (ScreenWidth - 30) / 2.0)
             flowLayout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
             
             collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)

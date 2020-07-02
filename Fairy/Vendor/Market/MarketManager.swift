@@ -15,7 +15,6 @@ class MarketManager: NSObject {
     var plineInfo : [String:[String]] = [:]
     
     override init() {
-        
     }
     
 }

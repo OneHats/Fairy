@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Moya
 
 enum MiaoService {
     case GetAD

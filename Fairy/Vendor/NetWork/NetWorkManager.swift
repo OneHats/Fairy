@@ -7,12 +7,9 @@
 //
 
 import Foundation
-import SwiftyJSON
-import Moya
 
 struct NetWorkManager {
     static let defaultProvider = MoyaProvider<MultiTarget>()
-    
     ///成功
     typealias SuccessClosure = (_ result: JSON) -> Void
     typealias FailClosure = (_ errorMsg: String) -> Void
@@ -21,25 +18,26 @@ struct NetWorkManager {
         defaultProvider.request(target) { result in
             switch result {
             case .success(let reponse):
+//                reponse.mapJSON()
+                
                 let json = JSON(reponse.data)
-                if json["code"].intValue == 200 || json["code"].intValue == 100{
+                if json["code"].intValue == 200 || json["code"].intValue == 100 {
                     success(json)
                     
                 } else {
-                    failure(json["msg"].stringValue)
+                    let errorMsg = json["msg"].stringValue
+                    failure(errorMsg)
+                    print(target.path,errorMsg)
                 }
                     
             case .failure(let error):
                 print(target.path,error)
-                failure("net error")
+                failure("Error")
             }
         }
-            
+        
     }
     
         
 }
 
-//class NetWorkManager: NSObject {
-//
-//}

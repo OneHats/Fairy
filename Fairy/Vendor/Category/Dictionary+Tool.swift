@@ -10,17 +10,21 @@ import UIKit
 
 extension Dictionary {
     func jsonString() -> String {
-        if JSONSerialization.isValidJSONObject(self) {
-            let data = try? JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions.fragmentsAllowed)
-            
-            guard let jsonData = data else { return "" }
-            
-            let result = String(data: jsonData, encoding: String.Encoding.utf8)!
-            return result
+        let data = self.jsonData()
+        guard let result = String(data: data, encoding: String.Encoding.utf8) else {
+            return ""
         }
-        print("not ValidJSONObject")
-        return ""
-        
-        
+        return result
+    }
+    
+    func jsonData() -> Data {
+        if JSONSerialization.isValidJSONObject(self) {
+            guard let data = try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted) else {
+                return Data()
+            }
+            return data
+        }
+//        print("Not ValidJSONObject")
+        return Data()
     }
 }
