@@ -1,3 +1,88 @@
-PODFILE CHECKSUM: 3c49cd89013e459cc7882a861d4d4f7841837858
+PODS:
+  - Alamofire (5.2.1)
+  - GzipSwift (5.1.1)
+  - Kingfisher (5.14.0):
+    - Kingfisher/Core (= 5.14.0)
+  - Kingfisher/Core (5.14.0)
+  - KSChart (5.1.10)
+  - Macaw (0.9.6):
+    - SWXMLHash
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - PKHUD (5.3.0)
+  - PullToRefresher (3.3)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - Segmentio (4.1)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
+  - Starscream (4.0.3)
+  - SwiftyJSON (5.0.0)
+  - SWXMLHash (5.0.1)
+  - Tiercel (3.2.0)
+
+DEPENDENCIES:
+  - GzipSwift
+  - Kingfisher
+  - KSChart
+  - Macaw
+  - Moya
+  - PKHUD
+  - PullToRefresher
+  - RxCocoa
+  - RxSwift
+  - Segmentio
+  - SQLite.swift
+  - Starscream
+  - SwiftyJSON
+  - Tiercel
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - GzipSwift
+    - Kingfisher
+    - KSChart
+    - Macaw
+    - Moya
+    - PKHUD
+    - PullToRefresher
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - Segmentio
+    - SQLite.swift
+    - Starscream
+    - SwiftyJSON
+    - SWXMLHash
+    - Tiercel
+
+SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  GzipSwift: 893f3e48e597a1a4f62fafcb6514220fcf8287fa
+  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  KSChart: a1687d259567e326b51478ab30560576c2ffe774
+  Macaw: 8306d775625ba003beee4186b9533fd7cf284024
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  PullToRefresher: 6fc2ab6494caf949bcf6f0223ffd23f9d21a06f6
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+  Starscream: ef06f0961fff0880bca0604416d61141e4faca67
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
+  Tiercel: 37c00d3d309657951d00ae68dcb6ce8c7dccf584
+
+PODFILE CHECKSUM: 415f8705ed6c8404a6a04da51111f46b06cfb53c
 
 COCOAPODS: 1.9.1
