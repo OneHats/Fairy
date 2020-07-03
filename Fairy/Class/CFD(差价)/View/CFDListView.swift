@@ -10,7 +10,7 @@ import UIKit
 import PullToRefresh
 import Segmentio
 
-class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelegate {
+class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     private let tableView = UITableView.init(frame: CGRect.zero, style: .plain)
     private var dataList:[ContractInfo]?
@@ -22,17 +22,15 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
         tableView.removeAllPullToRefresh()
     }
     
-    override func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        SocketManager.share.delegate = self
-        
-        tableView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+//        tableView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        tableView.frame = self.bounds
         tableView.register(UINib.init(nibName: "CFDListViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        tableView.rowHeight = 148
-        tableView.sectionHeaderHeight = 0.0
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.rowHeight = 148
         tableView.tableFooterView = UIView()
         tableView.tableHeaderView = headerView()
         addSubview(tableView)
@@ -47,8 +45,11 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
         requestCacheData()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func didAppear() {
-        SocketManager.share.delegate = self
         connectTicker()
     }
     
@@ -100,10 +101,10 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
 //        lineVC.contractInfo = dataList![indexPath.row]
 //        fatherVC?.navigationController?.pushViewController(lineVC, animated: true)
         
-        let webVC = WebViewController.init()
-        webVC.hidesBottomBarWhenPushed = true
-        webVC.urlString = dataList![indexPath.row].icon
-        fatherVC?.navigationController?.pushViewController(webVC, animated: true)
+//        let webVC = WebViewController.init()
+//        webVC.hidesBottomBarWhenPushed = true
+//        webVC.urlString = dataList![indexPath.row].icon
+//        fatherVC?.navigationController?.pushViewController(webVC, animated: true)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -150,12 +151,12 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
     func disconnectTicker() {
         
     }
-
-    func didReceive(JsonData: JSON) {
-        let event = JsonData["event"].stringValue
+    
+    func receiveSocketData(_ jsonData: JSON) {
+        let event = jsonData["event"].stringValue
         
         if event == "subscribe.ticker" {
-            let tickerJson = JsonData["data"]
+            let tickerJson = jsonData["data"]
             let ticker = MarketTicker.modelWithJsonData(json: tickerJson)
             MarketManager.share.ticketInfo[ticker.code] = ticker
             
@@ -177,8 +178,8 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate,SocketDelega
         }
         
         if event == "subscribe.pline" {
-            let pline = JsonData["data"]["plines"]
-            let code = JsonData["data"]["code"].stringValue
+            let pline = jsonData["data"]["plines"]
+            let code = jsonData["data"]["code"].stringValue
             if pline.array?.count == 0 {
                 return
             }

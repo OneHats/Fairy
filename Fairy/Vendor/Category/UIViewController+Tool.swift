@@ -33,22 +33,43 @@ extension UIViewController {
     }
     
     //MARK:--------------navigationItem
-    func rightItemWith(style:UIBarButtonItem.SystemItem) {
-        let item = UIBarButtonItem(barButtonSystemItem: style,
-                                   target: self,
-                                   action: #selector(rightItemClick))
-        self.navigationItem.rightBarButtonItem = item
+    func leftItem(withTitle text:String) {
+        print(text)
     }
     
-    func rightItemWith(title:String,color:UIColor) {
-        let item = UIBarButtonItem(title: title,
-                                   style: .plain,
-                                   target: self,
-                                   action: #selector(rightItemClick))
-        let attri = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 14),
-                     NSAttributedString.Key.foregroundColor:color]
-        item.setTitleTextAttributes(attri, for: .normal)
-        self.navigationItem.rightBarButtonItem = item
+    func leftItem(imageName name:String? = nil) {
+        var name = name
+        if name == nil {
+            name = "leftItemImage"
+        }
+        let img = UIImage(named: name!)
+        let leftItem = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(leftItemClick))
+        self.navigationItem.leftBarButtonItem = leftItem
+    }
+    
+    func rightItem(systemItem style:UIBarButtonItem.SystemItem) {
+        let rightItem = UIBarButtonItem(barButtonSystemItem: style, target: self, action: #selector(rightItemClick))
+        self.navigationItem.rightBarButtonItem = rightItem
+    }
+    func rightItem(withTitle text:String,color:UIColor) {
+        let rightItem = UIBarButtonItem(title: text, style: .plain, target: self, action: #selector(rightItemClick))
+        self.navigationItem.rightBarButtonItem = rightItem
+    }
+    func rightItem(imageName name:String) {
+        let img = UIImage(named: name)
+        let rightItem = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(rightItemClick))
+        self.navigationItem.rightBarButtonItem = rightItem
+    }
+    
+    @objc func leftItemClick() {
+        if let nvc = self.navigationController {
+            if nvc.viewControllers.count > 0 {
+                nvc.popViewController(animated: true)
+                return
+            }
+        }
+        self.dismiss(animated: true) {
+        }
     }
     
     @objc func rightItemClick() {

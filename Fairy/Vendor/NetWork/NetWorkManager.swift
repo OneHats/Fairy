@@ -31,7 +31,7 @@ struct NetWorkManager {
                 }
                     
             case .failure(let error):
-                print(target.path,error)
+                print(target.path,error.errorDescription!)
                 failure("Error")
             }
         }

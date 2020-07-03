@@ -12,7 +12,7 @@ import Gzip
 
 public protocol SocketDelegate: class {
 //    func didReceive(socketData: [String:Any])
-    func didReceive(JsonData: JSON)
+    func didReceive(jsonData: JSON)
 }
 
 class SocketManager: NSObject,WebSocketDelegate {
@@ -171,7 +171,7 @@ class SocketManager: NSObject,WebSocketDelegate {
             }
             
             guard let sDelegate = delegate else { break }
-            sDelegate.didReceive(JsonData: result)
+            sDelegate.didReceive(jsonData: result)
             break
             
         case .ping(_):

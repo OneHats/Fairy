@@ -11,38 +11,32 @@ import Kingfisher
 
 class HomeViewController: UIViewController {
     
+    private let ADCacheKey = "ADCacheKey"
     private var bannerView:BannerScrollView?
-    private var tableView:UITableView?
-    private var dataArray:[JSON] = []
-    private var refreshControl:UIRefreshControl?
-    
-    var cfdView : CFDListView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        automaticallyAdjustsScrollViewInsets = false
+        rightItem(systemItem: .add)
         
-        self.rightItemWith(title: "看来", color: .white)
-        self.rightItemWith(style: .add)
+        setSubView()
         
-//        setSubView()
-        cfdView = CFDListView.init(frame: CGRect(x: 0, y: NavigationBarH, width: ScreenWidth, height: ScreenHeight - NavigationBarH-TabBarH - BottomH))
-        cfdView?.fatherVC = self
-        view.addSubview(cfdView!)
+        if let adCache = UserDefaults.standard.object(forKey: ADCacheKey) {
+            let json = JSON(adCache)
+            self.bannerView?.dataArray = ADModel.arrayWithJson(json: json)
+        }
         
-//        let target = MultiTarget(MiaoService.GetAD)
-//        NetWorkManager.request(target, success: { json in
-//            self.bannerView?.dataArray = ADModel.arrayWithJson(json: json)
-//        }) { _ in
-//        }
+        let target = MultiTarget(MiaoService.GetAD)
+        NetWorkManager.request(target, success: { json in
+            UserDefaults.standard.set(json.dictionaryObject, forKey: self.ADCacheKey)
+            self.bannerView?.dataArray = ADModel.arrayWithJson(json: json)
+        }) { _ in
+        }
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        cfdView?.didAppear()
     }
     
     //MARK:

@@ -37,10 +37,10 @@ extension MiaoService : TargetType {
     
     var task: Task {
         switch self {
-        case .GetAD:
-            return .requestPlain
         case let .GetHotLive(page):
             return .requestParameters(parameters: ["page":page], encoding: JSONEncoding.default)
+        default:
+            return .requestPlain
         }
     }
     

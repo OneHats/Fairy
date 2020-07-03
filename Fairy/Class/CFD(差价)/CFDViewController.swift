@@ -8,21 +8,28 @@
 
 import UIKit
 
-class CFDViewController: UIViewController {
+class CFDViewController: UIViewController,SocketDelegate {
     
-    let scrollView = UIScrollView(frame: CGRect.zero)
+    var cfdView : CFDListView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        navigationItem.title = "CCC"
+        navigationItem.title = "CFD"
         
-        scrollView.frame = self.view.bounds
-        scrollView.backgroundColor = ThemeColorBlue
-        view.addSubview(scrollView)
+        cfdView = CFDListView.init(frame: CGRect(x: 0, y: NavigationBarH, width: ScreenWidth, height: ScreenHeight - NavigationBarH-TabBarH - BottomH))
+        cfdView?.fatherVC = self
+        view.addSubview(cfdView!)
     }
-
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        SocketManager.share.delegate = self
+        cfdView?.didAppear()
+    }
+    
+    func didReceive(jsonData: JSON) {
+        cfdView?.receiveSocketData(jsonData)
+    }
     
     
 }

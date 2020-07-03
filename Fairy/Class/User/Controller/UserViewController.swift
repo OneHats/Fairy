@@ -16,6 +16,8 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        navigationItem.title = UserManager.share.userInfo.nickName
+        rightItem(systemItem: .pause)
         
         tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -26,10 +28,6 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
         tableView?.layoutMargins = UIEdgeInsets.zero
         tableView?.separatorInset = UIEdgeInsets.zero
         view.addSubview(tableView!)
-        
-        navigationItem.title = UserManager.share.userInfo.nickName
-        
-        rightItemWith(style: UIBarButtonItem.SystemItem.action)
     }
     
     override func rightItemClick() {

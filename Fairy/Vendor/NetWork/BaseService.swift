@@ -36,7 +36,7 @@ extension BaseService : TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .BaseSystemVersion(_),.BaseBannerList(_),.BaseInstrumentList,.BaseCommodityIcons:
+        default:
             return .get
         }
     }
@@ -51,7 +51,7 @@ extension BaseService : TargetType {
             return .requestParameters(parameters: ["currentVersion": version], encoding: URLEncoding.default)
         case let .BaseBannerList(bannerType):
             return .requestParameters(parameters: ["type": bannerType], encoding: URLEncoding.default)
-        case .BaseInstrumentList,.BaseCommodityIcons:
+        default:
             return .requestPlain
         }
     }

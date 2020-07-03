@@ -37,7 +37,7 @@ extension UserService : TargetType {
         switch self {
         case .UserRegister, .UserLoginMobile(_), .UserLoginEmail:
             return .post
-        case .UserHomePageInfo(_):
+        default:
             return .get
         }
     }
@@ -69,9 +69,8 @@ extension UserService : TargetType {
         case let .UserHomePageInfo(loginType):
             return .requestParameters(parameters: ["type":loginType], encoding: URLEncoding.default)
             
-        case .UserRegister: // Send no parameters
+        default:
             return .requestPlain
-            
         }
     }
     

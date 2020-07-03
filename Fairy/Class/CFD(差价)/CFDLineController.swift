@@ -34,10 +34,10 @@ class CFDLineController: UIViewController,SocketDelegate {
     }
     
     //MARK:
-    func didReceive(JsonData: JSON) {
-        let event = JsonData["event"].stringValue
+    func didReceive(jsonData: JSON) {
+        let event = jsonData["event"].stringValue
         if event == "subscribe.kline" {
-            let dataArray = JsonData["data"]["klines"].arrayValue
+            let dataArray = jsonData["data"]["klines"].arrayValue
             
             var chartDatas = [KSChartItem]()
             
@@ -73,7 +73,7 @@ class CFDLineController: UIViewController,SocketDelegate {
         }
         
         if event == "subscribe.ticker" {
-            let dataArray = JsonData["data"]
+            let dataArray = jsonData["data"]
             let ticker = MarketTicker.modelWithJsonData(json: dataArray)
             MarketManager.share.ticketInfo[ticker.code] = ticker
             
