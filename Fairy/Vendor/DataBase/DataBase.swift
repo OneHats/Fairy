@@ -62,6 +62,7 @@ class DataBase: NSObject {
             t.column(tag)
             t.column(symbol)
             t.column(icon)
+            t.column(circulation)
         }))
 //        _ = try? db.run(contract.addColumn(circulation, defaultValue: "0"))
     }
@@ -92,13 +93,13 @@ class DataBase: NSObject {
     }
     
     //MARK:
-    func getCFDHotTopTen() -> [ContractInfo] {
+    func getWSCList() -> [ContractInfo] {
         guard let db = db else {
             return []
         }
         
-//        let hot = contract.filter(type == "ENCRY")
-        guard let result = try? db.prepare(contract) else {
+        let hot = contract.filter(tag.like("%@WSC%@") )
+        guard let result = try? db.prepare(hot) else {
             return []
         }
         

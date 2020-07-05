@@ -55,7 +55,7 @@ class CFDListView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     func requestCacheData() {
         DispatchQueue.global().async {
-            self.dataList = DataBase.share.getCFDHotTopTen()
+            self.dataList = DataBase.share.getWSCList()
         }
         
         DispatchQueue.main.async {

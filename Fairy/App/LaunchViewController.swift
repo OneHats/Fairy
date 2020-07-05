@@ -92,7 +92,7 @@ class LaunchViewController: UIViewController {
                 }
             }
             
-//            DataBase.share.updateContract(datas: array)
+            DataBase.share.updateContract(datas: array)
         }
         
 //        let target = MultiTarget(BaseService.BaseInstrumentList)
